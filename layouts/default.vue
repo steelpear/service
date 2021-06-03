@@ -13,20 +13,23 @@
     >
       <v-row>
         <v-col>
-          <v-row>
+          <v-row align="start">
             <v-icon
               large
             >
               mdi-map-marker-outline
             </v-icon>
-            <v-col>
+            <v-col class="pt-0">
               <div class="title">
-                г.Керчь, ул.Ерёменко 30
+                Республика Крым
+              </div>
+              <div class="title">
+                г.Керчь, ул.Ерёменко 30И
               </div>
               <div>(здание швейной фабрики)</div>
             </v-col>
           </v-row>
-          <v-row class="mt-2">
+          <v-row class="mt-3">
             <v-icon
               large
             >
@@ -35,6 +38,28 @@
             <div class="headline ml-2">
               +7 (978) 895-11-10
             </div>
+          </v-row>
+          <v-divider class="my-6" width="70%" />
+          <v-row align="start">
+            <v-icon
+              large
+            >
+              mdi-clock-outline
+            </v-icon>
+            <v-col class="pt-0">
+              <div class="title">
+                Режим работы:
+              </div>
+              <div class="title">
+                с 10.00 до 18.00
+              </div>
+              <div class="title">
+                без перерыва
+              </div>
+              <div class="title">
+                без выходных
+              </div>
+            </v-col>
           </v-row>
         </v-col>
         <v-col>
@@ -51,6 +76,9 @@
               :icon="{color: 'orange', content: 'Сервис Мобил'}"
             />
           </yandex-map>
+        </v-col>
+        <v-col>
+          ccc
         </v-col>
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
