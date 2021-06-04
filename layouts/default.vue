@@ -8,11 +8,16 @@
     <v-footer
       dark
       color="#1E1E1E"
-      class="pa-8"
+      class="py-10 px-12"
       app
     >
       <v-row>
-        <v-col>
+        <v-col
+          cols="12"
+          xs="12"
+          sm="12"
+          md="3"
+        >
           <v-row align="start">
             <v-icon
               large
@@ -36,7 +41,7 @@
               mdi-phone-in-talk-outline
             </v-icon>
             <div class="headline ml-2">
-              +7 (978) 895-11-10
+              <a href="tel:+7 (978) 895-11-10" style="color: inherit; text-decoration: none;">+7 (978) 895-11-10</a>
             </div>
           </v-row>
           <v-divider class="my-6" width="70%" />
@@ -62,7 +67,12 @@
             </v-col>
           </v-row>
         </v-col>
-        <v-col>
+        <v-col
+          cols="12"
+          xs="12"
+          sm="12"
+          md="6"
+        >
           <yandex-map
             :coords="coords"
             zoom="16"
@@ -77,9 +87,20 @@
             />
           </yandex-map>
         </v-col>
-        <v-col>
-          ccc
+        <v-col
+          cols="12"
+          xs="12"
+          sm="12"
+          md="3"
+        >
+          <div class="title text-center mb-2">
+            Поделиться
+          </div>
+          <share />
         </v-col>
+        <div class="text-right" style="width: 100%;">
+          <a href="mailto:steelpear@gmail.com" class="grey--text caption">сделано steelpear</a>
+        </div>
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
     </v-footer>
@@ -88,10 +109,12 @@
 
 <script>
 import { yandexMap, ymapMarker } from 'vue-yandex-maps'
+import Share from '~/components/Share.vue'
 export default {
   components: {
     yandexMap,
-    ymapMarker
+    ymapMarker,
+    Share
   },
   data () {
     return {
@@ -100,3 +123,7 @@ export default {
   }
 }
 </script>
+
+<style>
+  a {text-decoration: none;}
+</style>

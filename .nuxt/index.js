@@ -14,6 +14,7 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 import nuxt_plugin_plugin_2e398840 from 'nuxt_plugin_plugin_2e398840' // Source: .\\components\\plugin.js (mode: 'all')
 import nuxt_plugin_plugin_ed1de7d8 from 'nuxt_plugin_plugin_ed1de7d8' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_vuesocialsharingplugin_73bd9b7c from 'nuxt_plugin_vuesocialsharingplugin_73bd9b7c' // Source: .\\vue-social-sharing-plugin.js (mode: 'all')
 import nuxt_plugin_axios_3ba4fffa from 'nuxt_plugin_axios_3ba4fffa' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_ymapPlugin_43baa32b from 'nuxt_plugin_ymapPlugin_43baa32b' // Source: ..\\plugins\\ymapPlugin.js (mode: 'client')
 
@@ -185,6 +186,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_ed1de7d8 === 'function') {
     await nuxt_plugin_plugin_ed1de7d8(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuesocialsharingplugin_73bd9b7c === 'function') {
+    await nuxt_plugin_vuesocialsharingplugin_73bd9b7c(app.context, inject)
   }
 
   if (typeof nuxt_plugin_axios_3ba4fffa === 'function') {
