@@ -1,4 +1,7 @@
 {
+  "Header": {
+    "description": "Auto imported from components/Header.vue"
+  },
   "Share": {
     "description": "Auto imported from components/Share.vue"
   }

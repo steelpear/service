@@ -7,6 +7,7 @@
     </v-main>
     <v-footer
       dark
+      absolute
       color="#1E1E1E"
       class="py-10 px-12"
       app
@@ -98,9 +99,9 @@
           </div>
           <share />
         </v-col>
-        <div class="text-right" style="width: 100%;">
-          <a href="mailto:steelpear@gmail.com" class="grey--text caption">сделано steelpear</a>
-        </div>
+        <!-- <div class="text-center" style="width: 100%;">
+          <a href="mailto:steelpear@gmail.com" class="grey--text caption ml-12">сделано steelpear</a>
+        </div> -->
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
     </v-footer>
