@@ -17,6 +17,7 @@ import nuxt_plugin_plugin_ed1de7d8 from 'nuxt_plugin_plugin_ed1de7d8' // Source:
 import nuxt_plugin_vuesocialsharingplugin_73bd9b7c from 'nuxt_plugin_vuesocialsharingplugin_73bd9b7c' // Source: .\\vue-social-sharing-plugin.js (mode: 'all')
 import nuxt_plugin_axios_3ba4fffa from 'nuxt_plugin_axios_3ba4fffa' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_ymapPlugin_43baa32b from 'nuxt_plugin_ymapPlugin_43baa32b' // Source: ..\\plugins\\ymapPlugin.js (mode: 'client')
+import nuxt_plugin_vmask_3c04b27e from 'nuxt_plugin_vmask_3c04b27e' // Source: ..\\plugins\\v-mask.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -198,6 +199,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (process.client && typeof nuxt_plugin_ymapPlugin_43baa32b === 'function') {
     await nuxt_plugin_ymapPlugin_43baa32b(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vmask_3c04b27e === 'function') {
+    await nuxt_plugin_vmask_3c04b27e(app.context, inject)
   }
 
   // Lock enablePreview in context

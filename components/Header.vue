@@ -47,14 +47,20 @@
       </v-col>
     </v-row>
 
-    <v-dialog
+    <v-navigation-drawer
       v-model="statusDialog"
-      max-width="400"
+      app
+      bottom
+      temporary
+      right
+      width="350"
+      @input="closeStatusDialog"
     >
-      <v-card>
+      <v-card class="elevation-0">
         <div class="text-h5 text-center py-3">
           <v-icon
             large
+            color="indigo"
           >
             mdi-alert-circle-check-outline
           </v-icon>
@@ -64,10 +70,11 @@
           <v-text-field
             v-if="radioGroup == 1"
             v-model="number"
+            v-mask="'#######'"
             label="Введите номер квитанции"
             outlined
             clearable
-            hint="Номер квитанции (только цифры). Например - 12345"
+            hint="Номер квитанции (только цифры)"
           />
           <v-text-field
             v-if="radioGroup == 2"
@@ -80,46 +87,45 @@
           <v-text-field
             v-if="radioGroup == 3"
             v-model="phone"
+            v-mask="'+7 (###) ###-##-##'"
             label="Введите номер телефона"
             outlined
             clearable
-            hint="Номер телефона, который указан в квитанции"
+            hint="Номер телефона (без +7 или 8)"
           />
           <v-radio-group v-model="radioGroup">
             <v-radio
               label="По номеру квитанции"
               :value="1"
+              color="indigo"
             />
             <v-radio
               label="По фамилии"
               :value="2"
+              color="indigo"
             />
             <v-radio
               label="По номеру телефона"
               :value="3"
+              color="indigo"
             />
           </v-radio-group>
         </v-card-text>
 
         <v-card-actions>
           <v-btn
-            color="red"
-            text
-            @click="statusDialog = false"
-          >
-            Отмена
-          </v-btn>
-          <v-spacer />
-          <v-btn
             color="indigo"
-            text
+            dark
+            block
+            large
             @click="statusDialog = false"
           >
             Узнать
           </v-btn>
         </v-card-actions>
+        <v-img src="logo.png" max-width="250" class="mx-auto" />
       </v-card>
-    </v-dialog>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -132,6 +138,16 @@ export default {
       number: '',
       name: '',
       phone: ''
+    }
+  },
+  methods: {
+    closeStatusDialog () {
+      if (this.statusDialog === false) {
+        this.radioGroup = 1
+        this.number = ''
+        this.name = ''
+        this.phone = ''
+      }
     }
   }
 }
