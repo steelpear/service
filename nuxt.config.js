@@ -1,6 +1,9 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -27,6 +30,8 @@ export default {
       { src: 'chatra.js', type: 'text/javascript' }
     ]
   },
+
+  loading: { color: 'blue' },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
@@ -57,7 +62,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.baseUrl
+  },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

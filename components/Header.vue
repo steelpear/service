@@ -13,6 +13,9 @@
         </v-row>
       </v-col>
       <v-col>
+        <logo />
+      </v-col>
+      <v-col>
         <v-row class="mt-1 pr-3 indigo--text text--darken-4 float-right">
           <v-icon
             large
@@ -99,11 +102,11 @@
               :value="1"
               color="indigo"
             />
-            <v-radio
+            <!-- <v-radio
               label="По фамилии"
               :value="2"
               color="indigo"
-            />
+            /> -->
             <v-radio
               label="По номеру телефона"
               :value="3"
@@ -118,7 +121,7 @@
             dark
             block
             large
-            @click="statusDialog = false"
+            @click="getStatus"
           >
             Узнать
           </v-btn>
@@ -130,7 +133,11 @@
 </template>
 
 <script>
+import Logo from '~/components/Logo.vue'
 export default {
+  components: {
+    Logo
+  },
   data () {
     return {
       statusDialog: false,
@@ -148,6 +155,25 @@ export default {
         this.name = ''
         this.phone = ''
       }
+    },
+    getStatus () {
+      let findField = ''
+      this.statusDialog = false
+      if (this.radioGroup === 1) {
+        findField = this.number
+      } else if (this.radioGroup === 2) {
+        findField = this.name
+      } else {
+        findField = this.phone
+      }
+      this.$axios.post('handler.php', {
+        field: findField,
+        mode: this.radioGroup,
+        action: 'getstatus'
+      })
+        .then((response) => {
+          alert(response.data)
+        })
     }
   }
 }
