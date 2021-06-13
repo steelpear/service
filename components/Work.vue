@@ -1,15 +1,32 @@
 <template>
   <v-container class="py-12">
     <div class="text-center display-1">
-      Как мы работаем:
+      Как мы работаем
+    </div>
+    <div class="text-center line-title mt-1 title text--secondary">
+      Этапы взаимодействия нашего сервисного центра с клиентами
     </div>
     <v-row aling="start" justify="center" class="text-center mt-5">
       <v-col
         v-for="item in items"
         :key="item._id"
       >
-        <img :src="item.img" width="120" height="120" class="mx-auto pa-1 mb-3 item-img">
-        <div>{{ item.text }}</div>
+        <v-hover v-slot="{ hover }" open-delay="200">
+          <div
+            style="cursor: pointer"
+          >
+            <img
+              :src="item.img"
+              width="120"
+              height="120"
+              class="mx-auto pa-1 mb-3 item-img"
+              :class="{ 'animate__animated animate__pulse': hover }"
+            >
+            <div :class="{ 'black--text': hover }">
+              {{ item.text }}
+            </div>
+          </div>
+        </v-hover>
       </v-col>
     </v-row>
   </v-container>
@@ -26,7 +43,7 @@ export default {
         },
         {
           img: '2.svg',
-          text: 'Мы производим бесплатную диагностику, выявляем проблему, согласовываем сроки и стоимость ремонта.'
+          text: 'Мы производим бесплатную диагностику, выявляем проблемы, согласовываем сроки и стоимость ремонта.'
         },
         {
           img: '3.svg',
@@ -42,10 +59,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .item-img {
     border: 2px solid;
     border-radius: 50%;
-    border-color: #FF931E;
+    border-color: orange;
   }
 </style>

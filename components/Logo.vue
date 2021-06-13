@@ -3,7 +3,7 @@
     <div class="elem">
       <img src="service.svg">
     </div>
-    <div class="sub text-center mt-2">
+    <div class="sub mt-2">
       <img src="sublogo.svg">
     </div>
   </div>

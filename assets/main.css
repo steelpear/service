@@ -1,0 +1,11 @@
+.line-title:after, .line-title:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 3%;
+  height: 2px;
+  background-color: grey;
+  position: relative;
+}
+.line-title:after {margin-right: -100%;right: -8px;}
+.line-title:before {margin-left: -100%;right: 8px;}

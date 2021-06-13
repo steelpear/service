@@ -1,4 +1,7 @@
 {
+  "Advantages": {
+    "description": "Auto imported from components/Advantages.vue"
+  },
   "Header": {
     "description": "Auto imported from components/Header.vue"
   },

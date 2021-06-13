@@ -24,7 +24,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oswald:400,700' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Oswald:400,700' },
+      { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css ' }
     ],
     script: [
       { src: 'chatra.js', type: 'text/javascript' }
@@ -34,9 +35,7 @@ export default {
   loading: { color: 'blue' },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
-
+  css: ['~/assets/main.css'],
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '~/plugins/ymapPlugin.js', mode: 'client' },
