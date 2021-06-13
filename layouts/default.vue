@@ -1,14 +1,13 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
+      <section>
         <nuxt />
-      </v-container>
+      </section>
     </v-main>
     <v-footer
       dark
       absolute
-      color="#1E1E1E"
       class="py-10 px-12"
       app
     >

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container>
     <v-row align="start" class="pa-4">
       <v-col>
         <v-row align="start">
@@ -129,7 +129,7 @@
         <v-img src="logo.png" max-width="250" class="mx-auto" />
       </v-card>
     </v-navigation-drawer>
-  </div>
+  </v-container>
 </template>
 
 <script>

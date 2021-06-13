@@ -9,3 +9,4 @@ You can directly use them in pages and other components without the need to impo
 - `<Header>` | `<header>` (components/Header.vue)
 - `<Logo>` | `<logo>` (components/Logo.vue)
 - `<Share>` | `<share>` (components/Share.vue)
+- `<Work>` | `<work>` (components/Work.vue)
