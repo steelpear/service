@@ -9,6 +9,9 @@
       <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.work, {offset: -30})">
         Как мы работаем
       </div>
+      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.consult)">
+        Бесплатная консультация
+      </div>
       <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.recalls)">
         Отзывы
       </div>
@@ -20,6 +23,7 @@
     <advantages ref="advantages" />
     <about ref="about" />
     <work ref="work" />
+    <consult ref="consult" />
     <recalls ref="recalls" />
   </div>
 </template>
@@ -31,6 +35,7 @@ import Advantages from '~/components/Advantages'
 import Recalls from '~/components/Recalls'
 import About from '~/components/About'
 import Slider from '~/components/Slider'
+import Consult from '~/components/Consult'
 export default {
   components: {
     Header,
@@ -38,7 +43,8 @@ export default {
     Advantages,
     Recalls,
     About,
-    Slider
+    Slider,
+    Consult
   }
 }
 </script>

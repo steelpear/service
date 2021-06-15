@@ -5,6 +5,9 @@
   "Advantages": {
     "description": "Auto imported from components/Advantages.vue"
   },
+  "Consult": {
+    "description": "Auto imported from components/Consult.vue"
+  },
   "Header": {
     "description": "Auto imported from components/Header.vue"
   },

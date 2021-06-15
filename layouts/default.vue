@@ -97,16 +97,14 @@
             Поделиться
           </div>
           <share />
+          <!-- <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a> -->
         </v-col>
-        <!-- <div class="text-center" style="width: 100%;">
-          <a href="mailto:steelpear@gmail.com" class="grey--text caption ml-12">сделано steelpear</a>
-        </div> -->
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
       <v-fab-transition>
         <v-btn
           v-show="offsetTop > 25"
-          color="primary"
+          color="indigo"
           fab
           dark
           fixed

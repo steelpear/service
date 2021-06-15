@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container class="py-12">
     <div class="text-center display-1">
       Отзывы наших клиентов
     </div>
@@ -14,7 +14,7 @@
         v-for="(item, i) in items"
         :key="i"
         class="px-16"
-        ripple="true"
+        ripple
       >
         <v-sheet height="100%" class="px-16">
           <v-row
