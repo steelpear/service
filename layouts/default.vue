@@ -8,7 +8,7 @@
     <v-footer
       dark
       absolute
-      class="py-10 px-12"
+      class="py-10 px-12 grad-bkg"
       app
     >
       <v-row>
@@ -103,6 +103,21 @@
         </div> -->
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
+      <v-fab-transition>
+        <v-btn
+          v-show="offsetTop > 25"
+          color="primary"
+          fab
+          dark
+          fixed
+          class="up-btn"
+          @click="$vuetify.goTo(0)"
+        >
+          <v-icon>
+            mdi-arrow-up
+          </v-icon>
+        </v-btn>
+      </v-fab-transition>
     </v-footer>
   </v-app>
 </template>
@@ -118,12 +133,31 @@ export default {
   },
   data () {
     return {
-      coords: [45.362039, 36.469364]
+      coords: [45.362039, 36.469364],
+      offsetTop: 0
     }
+  },
+  beforeMount () {
+    window.addEventListener('scroll', (e) => {
+      requestAnimationFrame(() => {
+        const scrollPos = window.scrollY
+        const winHeight = window.innerHeight
+        const docHeight = document.documentElement.scrollHeight
+        const perc = (100 * scrollPos) / (docHeight - winHeight)
+        this.offsetTop = perc
+      })
+    })
+  },
+  beforeDestroy () {
+    window.removeEventListener('scroll', (e) => {})
   }
 }
 </script>
 
 <style>
   a {text-decoration: none;}
+  .up-btn {
+    bottom: 100px !important;
+    right: 25px !important;
+  }
 </style>

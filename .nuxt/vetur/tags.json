@@ -1,4 +1,7 @@
 {
+  "About": {
+    "description": "Auto imported from components/About.vue"
+  },
   "Advantages": {
     "description": "Auto imported from components/Advantages.vue"
   },
@@ -8,8 +11,14 @@
   "Logo": {
     "description": "Auto imported from components/Logo.vue"
   },
+  "Recalls": {
+    "description": "Auto imported from components/Recalls.vue"
+  },
   "Share": {
     "description": "Auto imported from components/Share.vue"
+  },
+  "Slider": {
+    "description": "Auto imported from components/Slider.vue"
   },
   "Work": {
     "description": "Auto imported from components/Work.vue"

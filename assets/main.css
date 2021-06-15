@@ -9,3 +9,5 @@
 }
 .line-title:after {margin-right: -100%;right: -8px;}
 .line-title:before {margin-left: -100%;right: 8px;}
+
+.grad-bkg { background: linear-gradient(110deg, #272727, #373737); }

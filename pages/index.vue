@@ -1,32 +1,44 @@
 <template>
   <div>
     <Header />
-    <v-toolbar dark class="px-16">
+    <v-toolbar dark class="px-16 grad-bkg">
       <v-spacer />
-      <div v-ripple class="menu-btn px-3 py-1">
+      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.about)">
         О нас
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.advantages, {offset: -530})">
+      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.work, {offset: -30})">
         Как мы работаем
+      </div>
+      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.recalls)">
+        Отзывы
       </div>
       <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo(9999)">
         Контакты
       </div>
     </v-toolbar>
+    <slider />
     <advantages ref="advantages" />
+    <about ref="about" />
     <work ref="work" />
+    <recalls ref="recalls" />
   </div>
 </template>
 
 <script>
-import Header from '~/components/Header.vue'
-import Work from '~/components/Work.vue'
-import Advantages from '~/components/Advantages.vue'
+import Header from '~/components/Header'
+import Work from '~/components/Work'
+import Advantages from '~/components/Advantages'
+import Recalls from '~/components/Recalls'
+import About from '~/components/About'
+import Slider from '~/components/Slider'
 export default {
   components: {
     Header,
     Work,
-    Advantages
+    Advantages,
+    Recalls,
+    About,
+    Slider
   }
 }
 </script>
