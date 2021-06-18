@@ -4,11 +4,8 @@
       Отзывы наших клиентов
     </div>
     <v-carousel
-      cycle
-      interval="10000"
       height="250"
       hide-delimiters
-      hide-delimiter-background
     >
       <v-carousel-item
         v-for="(item, i) in items"
@@ -61,10 +58,10 @@ export default {
           city: 'Пермь'
         },
         {
-          name: 'Харченко Светлана',
+          name: 'Куличенко Светлана',
           text: 'Меняла в Сервис Мобил разбитый экран на iPhone 6. Поменяли все быстро, цены доступные. Все понравилось. ',
           avatar: '76.jpg',
-          city: ''
+          city: 'Харьков'
         },
         {
           name: 'Дмитрий',

@@ -8,6 +8,12 @@
   "Consult": {
     "description": "Auto imported from components/Consult.vue"
   },
+  "Defects": {
+    "description": "Auto imported from components/Defects.vue"
+  },
+  "Equipment": {
+    "description": "Auto imported from components/Equipment.vue"
+  },
   "Header": {
     "description": "Auto imported from components/Header.vue"
   },

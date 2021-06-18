@@ -17,16 +17,105 @@
             </div>
             <v-card
               tile
-              color="white"
+              light
               max-width="700"
               min-height="220"
-              class="mx-auto pa-6 mt-6"
+              class="mx-auto pa-6 mt-6 text-left"
             >
-              dddd
+              <v-row align="start" justify="center">
+                <v-col>
+                  <v-text-field
+                    v-model="phone"
+                    v-mask="'+7 (###) ###-##-##'"
+                    outlined
+                    clearable
+                    label="Номер телефона"
+                    placeholder="+7 (____) ____ ___ ___"
+                    hint="Номер телефона (без +7 или 8)"
+                    prepend-inner-icon="mdi-cellphone"
+                  />
+                </v-col>
+                <v-col>
+                  <v-btn
+                    block
+                    dark
+                    color="indigo"
+                    elevation="2"
+                    tile
+                    x-large
+                    @click="orderConsult"
+                  >
+                    Заказать консультацию
+                  </v-btn>
+                </v-col>
+              </v-row>
+              <v-row align="center" justify="center">
+                <div class="text-h6 text--secondary">
+                  Или откройте чат WhatsApp
+                </div>
+                <v-btn
+                  class="mx-2"
+                  fab
+                  outlined
+                  large
+                  color="#13940A"
+                  href="https://api.whatsapp.com/send?phone=79788951110"
+                  target="_blank"
+                >
+                  <v-icon dark large>
+                    mdi-whatsapp
+                  </v-icon>
+                </v-btn>
+                <div class="text-h6 text--secondary">
+                  для получения консультации
+                </div>
+              </v-row>
             </v-card>
           </v-col>
         </v-row>
       </v-img>
     </div>
+    <v-snackbar
+      v-model="phoneAlert"
+      multi-line
+      timeout="2500"
+      top
+      dark
+    >
+      <v-row align="center" justify="space-around">
+        <v-icon>mdi-phone-check-outline</v-icon>
+        <div class="subtitle-1">
+          Введите номер телефона!
+        </div>
+        <v-btn
+          dark
+          icon
+          @click="phoneAlert = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-row>
+    </v-snackbar>
   </section>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      phone: '',
+      phoneAlert: false
+    }
+  },
+  methods: {
+    orderConsult () {
+      if (!this.phone) {
+        this.phoneAlert = true
+      } else {
+        alert(this.phone)
+        this.phone = ''
+      }
+    }
+  }
+}
+</script>

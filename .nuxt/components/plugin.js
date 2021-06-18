@@ -5,6 +5,8 @@ const components = {
   About: () => import('../..\\components\\About.vue' /* webpackChunkName: "components/about" */).then(c => wrapFunctional(c.default || c)),
   Advantages: () => import('../..\\components\\Advantages.vue' /* webpackChunkName: "components/advantages" */).then(c => wrapFunctional(c.default || c)),
   Consult: () => import('../..\\components\\Consult.vue' /* webpackChunkName: "components/consult" */).then(c => wrapFunctional(c.default || c)),
+  Defects: () => import('../..\\components\\Defects.vue' /* webpackChunkName: "components/defects" */).then(c => wrapFunctional(c.default || c)),
+  Equipment: () => import('../..\\components\\Equipment.vue' /* webpackChunkName: "components/equipment" */).then(c => wrapFunctional(c.default || c)),
   Header: () => import('../..\\components\\Header.vue' /* webpackChunkName: "components/header" */).then(c => wrapFunctional(c.default || c)),
   Logo: () => import('../..\\components\\Logo.vue' /* webpackChunkName: "components/logo" */).then(c => wrapFunctional(c.default || c)),
   Recalls: () => import('../..\\components\\Recalls.vue' /* webpackChunkName: "components/recalls" */).then(c => wrapFunctional(c.default || c)),
