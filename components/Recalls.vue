@@ -1,5 +1,5 @@
 <template>
-  <v-container class="py-12">
+  <v-container class="py-12" style="position: relative;">
     <div class="text-center display-1">
       Отзывы наших клиентов
     </div>

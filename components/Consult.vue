@@ -15,6 +15,7 @@
             <div class="title">
               Закажите бесплатную консультацию и наш менеджер перезвонит Вам
             </div>
+            <v-img src="arrow.svg" class="arrow" width="100" />
             <v-card
               tile
               light
@@ -119,3 +120,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .arrow {
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    left: 33%;
+  }
+</style>
