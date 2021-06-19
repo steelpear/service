@@ -3,25 +3,25 @@
     <Header />
     <v-toolbar dark class="px-16 grad-bkg display-3">
       <v-spacer />
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.about)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.about)">
         О нас
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.work, {offset: -30})">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.work, {offset: -30})">
         Как мы работаем
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.equipment)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.equipment)">
         Оборудование
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.defects)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.defects)">
         Типовые неисправности
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.consult)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.consult)">
         Бесплатная консультация
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo($refs.recalls)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo($refs.recalls)">
         Отзывы
       </div>
-      <div v-ripple class="menu-btn px-3 py-1" @click="$vuetify.goTo(9999)">
+      <div v-ripple class="menu-btn px-3 pb-3" @click="$vuetify.goTo(9999)">
         Контакты
       </div>
       <v-spacer />
@@ -128,6 +128,9 @@
             <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.about)">
               О нас
             </div>
+            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.advantages)">
+              Наши преимущества
+            </div>
             <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.work, {offset: -30})">
               Как мы работаем
             </div>
@@ -139,9 +142,6 @@
             </div>
             <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.consult)">
               Бесплатная консультация
-            </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.recalls)">
-              Отзывы
             </div>
           </div>
           <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a>
@@ -219,6 +219,19 @@ export default {
 
 <style>
   .menu-btn {cursor: pointer; font-size: 19px;}
+  .menu-btn:after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0%;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -15px;
+    opacity:.5;
+    transition: width .3s ease-in-out, opacity 1s;
+  }
+  .menu-btn:hover:after {width: 100%; opacity: 1}
   a {text-decoration: none;}
   .up-btn {
     bottom: 100px !important;

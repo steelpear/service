@@ -4,7 +4,7 @@
       Оборудование для диагностики и ремонта
     </div>
     <div class="text-center line-title mt-1 title text--secondary">
-      Мы используем только качественные и современные оборудование и инструменты
+      Мы используем только качественное и современное оборудование и инструменты
     </div>
     <v-row aling="start" justify="center" class="text-center mt-5" wrap>
       <v-col
@@ -13,17 +13,25 @@
       >
         <v-hover v-slot="{ hover }" open-delay="200">
           <div
-            style="cursor: pointer"
+            class="pa-6"
+            :class="hover ? 'card-wrap-hover' : 'card-wrap'"
+            style="cursor: pointer; position: relative"
           >
-            <v-img
-              :src="item.img"
-              width="300"
-              class="mx-auto pa-1 mb-3 item-img"
-              :class="{ 'animate__animated animate__pulse': hover }"
-            />
-            <div :class="{ 'black--text': hover }" class="title">
-              {{ item.text }}
+            <div style="position: relative">
+              <v-img
+                :src="item.img"
+                width="300"
+                class="mx-auto pa-1 mb-3 item-img"
+              />
+              <div :class="{ 'black--text': hover }" class="title">
+                {{ item.text }}
+              </div>
             </div>
+            <v-overlay
+              absolute
+              opacity="0.1"
+              :value="hover ? true : false"
+            />
           </div>
         </v-hover>
       </v-col>
@@ -50,7 +58,7 @@ export default {
         },
         {
           img: 'power-supply.jpg',
-          text: 'Программируемый блок питания'
+          text: 'Лабораторный блок питания'
         },
         {
           img: 'microscope.jpg',
@@ -65,3 +73,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .card-wrap {
+    border: 1px solid transparent;
+    transition: border .5s ease-in-out;
+  }
+  .card-wrap-hover {
+    border: 1px solid lightgrey;
+    transition: border .5s ease-in-out;
+  }
+</style>
