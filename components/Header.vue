@@ -59,7 +59,7 @@
       width="350"
       @input="closeStatusDialog"
     >
-      <v-card class="elevation-0">
+      <v-card class="elevation-0 mt-6">
         <div class="text-h5 text-center py-3">
           <v-icon
             large
@@ -69,66 +69,136 @@
           </v-icon>
           Узнать статус ремонта
         </div>
-        <v-card-text>
+        <v-card-text class="mt-6">
           <v-text-field
-            v-if="radioGroup == 1"
             v-model="number"
-            v-mask="'#######'"
+            v-mask="'#####'"
             label="Введите номер квитанции"
             outlined
             clearable
             hint="Номер квитанции (только цифры)"
+            @change="getStatus"
           />
-          <v-text-field
-            v-if="radioGroup == 2"
-            v-model="name"
-            label="Введите фамилию"
-            outlined
-            clearable
-            hint="Ф.И.О клиента, на которого оформлена квитанция"
-          />
-          <v-text-field
-            v-if="radioGroup == 3"
-            v-model="phone"
-            v-mask="'+7 (###) ###-##-##'"
-            label="Введите номер телефона"
-            outlined
-            clearable
-            hint="Номер телефона (без +7 или 8)"
-          />
-          <v-radio-group v-model="radioGroup">
-            <v-radio
-              label="По номеру квитанции"
-              :value="1"
-              color="indigo"
-            />
-            <!-- <v-radio
-              label="По фамилии"
-              :value="2"
-              color="indigo"
-            /> -->
-            <v-radio
-              label="По номеру телефона"
-              :value="3"
-              color="indigo"
-            />
-          </v-radio-group>
         </v-card-text>
-
         <v-card-actions>
           <v-btn
             color="indigo"
+            class="py-6"
             dark
             block
+            tile
             large
             @click="getStatus"
           >
             Узнать
           </v-btn>
         </v-card-actions>
-        <v-img src="logo.png" max-width="250" class="mx-auto" />
+        <v-img src="logo.png" max-width="250" class="mx-auto mt-6" />
       </v-card>
     </v-navigation-drawer>
+
+    <v-navigation-drawer
+      v-model="statusResultDialog"
+      app
+      bottom
+      temporary
+      left
+      width="400"
+      @input="closeStatusResultDialog"
+    >
+      <v-card class="elevation-0 mt-3">
+        <div class="text-h5 text-center">
+          <v-icon
+            large
+            color="indigo"
+          >
+            mdi-alert-circle-check-outline
+          </v-icon>
+          Информация о ремонте:
+        </div>
+        <v-card-text class="body-1 text--primary result-wrap">
+          <div>
+            <span class="font-weight-medium">Статус ремонта:</span> <span class="green--text text--darken-2 font-weight-medium">{{ status }}</span>
+          </div>
+          <div>
+            <span class="font-weight-medium">Номер квитанции:</span> {{ result.kvit }}
+          </div>
+          <div>
+            <span class="font-weight-medium">Ф.И.О.:</span> {{ result.sfio }}
+          </div>
+          <div>
+            <span class="font-weight-medium">Модель:</span> {{ result.appmod }}
+          </div>
+          <div>
+            <span class="font-weight-medium">Комплект при приёмке:</span> {{ result.komplekt }}
+          </div>
+          <div>
+            <span class="font-weight-medium">Заявленная неисправность:</span> {{ result.bugg }}
+          </div>
+          <div>
+            <span class="font-weight-medium">Дата приёмки:</span> {{ result.sdatone }}
+          </div>
+          <div v-if="result.sdout">
+            <span class="font-weight-medium">Дата выдачи:</span> {{ result.sdout }}
+          </div>
+          <div v-if="result.swork !== null && result.swork !== ''">
+            <span class="font-weight-medium">Выполненные работы:</span> {{ result.swork }}
+          </div>
+          <div v-if="result.swarant2 !== null && result.swarant2 !== ''">
+            <span class="font-weight-medium">Гарантия:</span> {{ result.swarant2 }}
+          </div>
+          <div v-if="result.scen3 !== null && result.scen3 !== '0' && result.scen3 !== ''">
+            <span class="font-weight-medium">Стоимость ремонта:</span> <span class="indigo--text text--darken-2 text-h5 font-weight-medium">{{ result.scen3 }}</span> р.
+          </div>
+        </v-card-text>
+        <v-divider class="mx-4" />
+      </v-card>
+    </v-navigation-drawer>
+
+    <v-snackbar
+      v-model="numberAlert"
+      timeout="2500"
+      top
+      dark
+    >
+      <v-row align="center" justify="space-around">
+        <v-spacer />
+        <div class="subtitle-1">
+          Введите номер квитанции!
+        </div>
+        <v-spacer />
+        <v-btn
+          dark
+          icon
+          @click="numberAlert = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-row>
+    </v-snackbar>
+
+    <v-snackbar
+      v-model="kvitAlert"
+      timeout="2500"
+      top
+      dark
+      color="red"
+    >
+      <v-row align="center" justify="space-around">
+        <v-spacer />
+        <div class="subtitle-1">
+          Такой квитанции не существует!
+        </div>
+        <v-spacer />
+        <v-btn
+          dark
+          icon
+          @click="kvitAlert = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-row>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -141,39 +211,62 @@ export default {
   data () {
     return {
       statusDialog: false,
-      radioGroup: 1,
+      statusResultDialog: false,
       number: '',
-      name: '',
-      phone: ''
+      status: '',
+      result: [],
+      numberAlert: false,
+      kvitAlert: false
     }
   },
   methods: {
     closeStatusDialog () {
       if (this.statusDialog === false) {
-        this.radioGroup = 1
         this.number = ''
-        this.name = ''
-        this.phone = ''
+      }
+    },
+    closeStatusResultDialog () {
+      if (this.statusResultDialog === false) {
+        this.result = []
       }
     },
     getStatus () {
-      let findField = ''
-      this.statusDialog = false
-      if (this.radioGroup === 1) {
-        findField = this.number
-      } else if (this.radioGroup === 2) {
-        findField = this.name
-      } else {
-        findField = this.phone
-      }
-      this.$axios.post('handler.php', {
-        field: findField,
-        mode: this.radioGroup,
-        action: 'getstatus'
-      })
-        .then((response) => {
-          alert(response.data)
+      if (this.number) {
+        this.statusDialog = false
+        this.$axios.post('handler.php', {
+          kvit: this.number,
+          action: 'getstatus'
         })
+          .then((response) => {
+            if (response.data != null) {
+              this.result = response.data
+              if (this.result.statea === '1') {
+                this.status = 'Ожидает ремонта'
+              } else if (this.result.statea === '2') {
+                this.status = 'В процессе ремонта'
+              } else if (this.result.statea === '3') {
+                this.status = 'Ожидает запчасть'
+              } else if (this.result.statea === '4') {
+                this.status = 'Готов'
+              } else if (this.result.statea === '5') {
+                this.status = 'Выдан'
+              } else if (this.result.statea === '7') {
+                this.status = 'Отказ от ремонта'
+              } else if (this.result.statea === '8') {
+                this.status = 'Выдан без ремонта'
+              } else if (this.result.statea === '9') {
+                this.status = 'В удалённом сервисном центре'
+              } else if (this.result.statea === '15') {
+                this.status = 'Требуется согласовать дополнительные условия ремонта. Свяжитесь с СЦ'
+              } else if (this.result.statea === '16') {
+                this.status = 'Согласованы дополнительные условия ремонта. Ремонт продолжается'
+              } else { this.status = '' }
+              this.statusResultDialog = true
+            } else { this.kvitAlert = true }
+          })
+      } else {
+        this.numberAlert = true
+      }
     }
   }
 }
@@ -190,5 +283,11 @@ export default {
     color: inherit;
     text-decoration: none;
     font-size: 26px;
+  }
+  .result-wrap div {
+    padding: 4px 7px;
+  }
+  .result-wrap div:nth-child(even) {
+    background: #EEEEEE;
   }
 </style>

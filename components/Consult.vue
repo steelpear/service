@@ -87,7 +87,6 @@
     </div>
     <v-snackbar
       v-model="phoneAlert"
-      multi-line
       timeout="2500"
       top
       dark
