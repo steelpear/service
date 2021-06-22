@@ -1,15 +1,19 @@
 <template>
-  <v-container class="py-12">
+  <v-container :class="$vuetify.breakpoint.mobile ? 'py-4' : 'py-12'">
     <div class="text-center display-1">
       Наши преимущества
     </div>
-    <div class="text-center line-title mt-1 title text--secondary">
+    <div class="text-center mt-1 title text--secondary" :class="{'line-title' : !$vuetify.breakpoint.mobile}">
       Высокий уровень сервиса помогает нам быть первыми на рынке услуг
     </div>
     <v-row aling="start" justify="center" class="text-center mt-5">
       <v-col
         v-for="item in items"
         :key="item._id"
+        cols="12"
+        xs="12"
+        sm="6"
+        md="3"
       >
         <v-hover v-slot="{ hover }" open-delay="200">
           <div

@@ -25,11 +25,11 @@ export default {
     return {
       sharing: {
         url: 'http://xn--90abinbseqoie.xn--p1ai/',
-        title: 'Say hi to Vite! A brand new, extremely fast development setup for Vue.',
-        description: 'This week, I’d like to introduce you to "Vite", which means "Fast". It’s a brand new development setup created by Evan You.',
-        quote: 'The hot reload is so fast it\'s near instant. - Evan You',
-        hashtags: 'vuejs,vite,javascript',
-        twitterUser: 'youyuxi'
+        title: 'Ремонт мобильных телефонов в Керчи.',
+        description: 'Сервис по ремонту мобильных телефонов в г.Керчь.',
+        quote: 'Ремонт мобильных телефонов в Керчи.',
+        hashtags: 'ремонтмобильных, сервис, ремонтпланшетов, Керчь',
+        twitterUser: ''
       },
       networks: [
         { network: 'twitter', icon: 'mdi-twitter' },

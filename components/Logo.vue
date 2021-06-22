@@ -1,43 +1,19 @@
 <template>
-  <div class="text-center">
-    <div class="elem">
-      <img src="service.svg">
-    </div>
-    <div class="sub mt-2">
-      <img src="sublogo.svg">
-    </div>
+  <div>
+    <v-img src="service.svg" max-width="300" class="logo mx-auto" />
+    <v-img src="sublogo.svg" max-width="240" class="sub mt-1 mx-auto" />
   </div>
 </template>
 
-<style>
-.elem {
-  overflow: hidden;
-  width: 0;
-  animation: anim 1s ease-in forwards;
+<style scoped>
+.logo {
+  opacity: .3;
+  animation: opacity 1s forwards;
 }
-.elem img {
-  display: block;
-  width: 350px;
-  object-fit: cover
-}
-
 .sub {
   opacity: 0;
   animation: opacity 3s forwards;
   animation-delay: 1.3s;
-}
-.sub img {
-  width: 250px;
-}
-@keyframes anim {
-  50% {
-    opacity: 0;
-    width: 0;
-  }
-  100% {
-    opacity: 1;
-    width: 350px;
-  }
 }
 @keyframes opacity {100% {opacity: 1;}}
 </style>

@@ -4,20 +4,31 @@
       cycle
       interval="10000"
       hide-delimiters
-      height="400"
+      :show-arrows="!$vuetify.breakpoint.mobile"
+      :height="$vuetify.breakpoint.smAndDown ? '250' : '400'"
     >
       <v-carousel-item
         v-for="(item,i) in items"
         :key="i"
       >
         <div>
-          <v-img :lazy-src="item.src" :src="item.src" />
+          <v-img :lazy-src="item.src" :src="item.src" :height="$vuetify.breakpoint.smAndDown ? '250' : '400'" />
           <v-overlay
             absolute
             z-index="0"
           />
         </div>
-        <v-row align="center" class="text-wrap">
+        <v-col
+          v-if="$vuetify.breakpoint.smAndDown"
+          cols="12"
+          xs="12"
+          sm="6"
+          class="text-wrap-mobile white--text px-3"
+        >
+          <!-- eslint-disable-next-line vue/no-v-html -->
+          <div class="title font-weight-regular" style="line-height: 1.6rem !important;" v-html="item.text" />
+        </v-col>
+        <v-row v-else align="center" class="text-wrap">
           <v-col cols="12" md="4" class="white--text headline">
             <!-- eslint-disable-next-line vue/no-v-html -->
             <div v-html="item.text" />
@@ -72,5 +83,10 @@ export default {
     position: absolute;
     top: 50px;
     left: 150px;
+  }
+  .text-wrap-mobile {
+    position: absolute;
+    top: 25px;
+    left: 5px;
   }
 </style>

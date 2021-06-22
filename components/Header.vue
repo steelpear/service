@@ -1,34 +1,42 @@
 <template>
-  <v-container>
-    <v-row align="start" class="pa-4">
-      <v-col>
-        <v-row align="start">
-          <v-img src="logo.png" max-width="140" />
-          <div class="title indigo--text text--darken-4 ml-6 mt-2" style="line-height: 1.5rem;">
-            Сервисный центр<br>
-            <span class="head-font clock-font">10.00 - 18.00</span><br>
-            без перерыва<br>
-            без выходных
-          </div>
+  <v-container fluid>
+    <v-row align="start" class="pa-4" dense>
+      <v-col cols="12" sm="6" md="4" xs="12">
+        <v-row align="start" :justify="$vuetify.breakpoint.xsOnly ? 'center' : 'space-between'" no-gutters>
+          <v-img src="logo.png" max-width="140" class="hidden-sm-and-down" />
+          <v-col :class="{'text-center' : $vuetify.breakpoint.xsOnly}">
+            <div class="text-h4 red--text text--darken-4 hidden-md-and-up">
+              Сервис Мобил
+            </div>
+            <div class="title indigo--text text--darken-4" style="line-height: 1.4rem;">
+              <div class="hidden-sm-and-down">
+                Сервисный центр<br>
+              </div>
+              <span class="head-font clock-font">10.00 - 18.00</span><br>
+              без перерыва<br>
+              без выходных
+            </div>
+          </v-col>
         </v-row>
       </v-col>
-      <v-col>
+      <v-col cols="12" md="4" class="hidden-sm-and-down">
         <logo />
       </v-col>
-      <v-col>
-        <v-row class="mt-1 pr-3 indigo--text text--darken-4 float-right">
+      <v-col cols="12" sm="6" md="4" xs="12">
+        <v-row align="center" justify="center" class="pr-3 mt-1 indigo--text text--darken-4" :class="{'float-right' : $vuetify.breakpoint.smAndUp}">
           <v-icon
             large
             color="indigo darken-4"
+            class="hidden-xs-only"
           >
             mdi-phone-in-talk-outline
           </v-icon>
-          <div class="headline ml-2">
+          <div class="headline ml-2 text-center">
             <a href="tel:+7 (978) 895-11-10" class="phone-link font-weight-black">+7 (978) 895-11-10</a>
           </div>
         </v-row>
-        <br>
-        <div class="text-right mt-7">
+        <!-- <br class="hidden-sm-and-down"> -->
+        <div :class="$vuetify.breakpoint.xsOnly ? 'text-center mt-6' : 'text-right mt-12'">
           <v-btn
             dark
             rounded
@@ -40,7 +48,7 @@
               left
               dark
               large
-              class="mr-4"
+              class="mr-4 hidden-xs-only"
             >
               mdi-alert-circle-check-outline
             </v-icon>
@@ -59,7 +67,7 @@
       width="350"
       @input="closeStatusDialog"
     >
-      <v-card class="elevation-0 mt-6">
+      <v-card class="elevation-0" :class="{'mt-6':$vuetify.breakpoint.smAndDown}">
         <div class="text-h5 text-center py-3">
           <v-icon
             large
@@ -77,7 +85,6 @@
             outlined
             clearable
             hint="Номер квитанции (только цифры)"
-            @change="getStatus"
           />
         </v-card-text>
         <v-card-actions>
@@ -93,7 +100,7 @@
             Узнать
           </v-btn>
         </v-card-actions>
-        <v-img src="logo.png" max-width="250" class="mx-auto mt-6" />
+        <v-img src="logo.png" max-width="250" class="mx-auto mt-6 hidden-sm-and-down" />
       </v-card>
     </v-navigation-drawer>
 
@@ -136,10 +143,10 @@
             <span class="font-weight-medium">Заявленная неисправность:</span> {{ result.bugg }}
           </div>
           <div>
-            <span class="font-weight-medium">Дата приёмки:</span> {{ result.sdatone }}
+            <span class="font-weight-medium">Дата приёмки:</span> {{ new Date(result.sdatone).toLocaleDateString() }}
           </div>
           <div v-if="result.sdout">
-            <span class="font-weight-medium">Дата выдачи:</span> {{ result.sdout }}
+            <span class="font-weight-medium">Дата выдачи:</span> {{ new Date(result.sdout).toLocaleDateString() }}
           </div>
           <div v-if="result.swork !== null && result.swork !== ''">
             <span class="font-weight-medium">Выполненные работы:</span> {{ result.swork }}

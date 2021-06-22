@@ -7,9 +7,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="136.56714mm"
-   height="11.870266mm"
-   viewBox="0 0 136.56714 11.870266"
+   width="146.56688mm"
+   height="17.870243mm"
+   viewBox="0 0 146.56688 17.870243"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
@@ -30,9 +30,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70710678"
-     inkscape:cx="306.07459"
-     inkscape:cy="212.90835"
+     inkscape:zoom="0.67971884"
+     inkscape:cx="324.97223"
+     inkscape:cy="224.24698"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -42,10 +42,11 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0" />
+     fit-margin-top="3"
+     fit-margin-left="5"
+     fit-margin-right="5"
+     fit-margin-bottom="3"
+     lock-margins="false" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -62,11 +63,11 @@
      inkscape:label="Слой 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-67.517765,-46.007404)">
+     transform="translate(-62.517763,-43.007391)">
     <text
        xml:space="preserve"
        id="text10"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Azbuka04;-inkscape-font-specification:Azbuka04;letter-spacing:-0.00529167px;white-space:pre;shape-inside:url(#rect12);fill:#1E1E1E;fill-opacity:1;stroke:none;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.9333px;line-height:1.25;font-family:Azbuka04;-inkscape-font-specification:Azbuka04;letter-spacing:-0.00529167px;white-space:pre;shape-inside:url(#rect12);fill:#1e1e1e;fill-opacity:1;stroke:none;"
        transform="translate(61.365084,24.321527)"><tspan
          x="5.2382812"
          y="30.389581"><tspan

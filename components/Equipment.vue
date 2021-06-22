@@ -38,7 +38,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-row align="center" no-gutters>
+    <v-row align="center" class="hidden-sm-and-down" no-gutters>
       <v-col
         v-for="(item, index) in banner"
         :key="index"

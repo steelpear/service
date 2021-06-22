@@ -25,7 +25,10 @@
               >
                 <v-img src="arrow.svg" class="arrow" width="100" :class="{ 'animate__animated animate__flash': hover }" />
                 <v-row align="start" justify="center">
-                  <v-col>
+                  <v-col
+                    cols="12"
+                    md="6"
+                  >
                     <v-text-field
                       v-model="phone"
                       v-mask="'+7 (###) ###-##-##'"
@@ -106,15 +109,40 @@
         </v-btn>
       </v-row>
     </v-snackbar>
+
+    <v-snackbar
+      v-model="sended"
+      timeout="2500"
+      top
+      dark
+      color="success"
+    >
+      <v-row align="center" justify="space-around">
+        <v-spacer />
+        <div class="subtitle-1">
+          Запрос отправлен
+        </div>
+        <v-spacer />
+        <v-btn
+          dark
+          icon
+          @click="phoneAlert = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-row>
+    </v-snackbar>
   </section>
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
 export default {
   data () {
     return {
       phone: '',
-      phoneAlert: false
+      phoneAlert: false,
+      sended: false
     }
   },
   methods: {
@@ -122,7 +150,17 @@ export default {
       if (!this.phone) {
         this.phoneAlert = true
       } else {
-        alert(this.phone)
+        try {
+          // eslint-disable-next-line import/no-named-as-default-member
+          emailjs.send('service_ehxrvcj', 'template_jc0asd1',
+            { message: this.phone }, 'user_yAXzCkfFs7sOpLhcM4mPg')
+          setTimeout(() => {
+            this.sended = true
+          }, 1000)
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.log({ error })
+        }
         this.phone = ''
       }
     }
@@ -134,8 +172,6 @@ export default {
   .arrow {
     position: absolute;
     z-index: 1;
-    /* top: 60px;
-    left: 33%; */
     top: -65px;
     left: -104px;
   }
