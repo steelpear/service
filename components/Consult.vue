@@ -3,7 +3,7 @@
     <div>
       <v-img
         src="consult.jpg"
-        max-height="400"
+        :height="$vuetify.breakpoint.mobile ? 'auto' : '400'"
         position="left bottom"
         dark
       >
@@ -23,7 +23,7 @@
                 min-height="220"
                 class="mx-auto pa-6 mt-6 text-left"
               >
-                <v-img src="arrow.svg" class="arrow" width="100" :class="{ 'animate__animated animate__flash': hover }" />
+                <v-img src="arrow.svg" class="arrow hidden-sm-and-down" width="100" :class="{ 'animate__animated animate__flash': hover }" />
                 <v-row align="start" justify="center">
                   <v-col
                     cols="12"
@@ -50,12 +50,12 @@
                       x-large
                       @click="orderConsult"
                     >
-                      Заказать консультацию
+                      Заказать <span class="hidden-xs-only">&nbsp;консультацию</span>
                     </v-btn>
                   </v-col>
                 </v-row>
                 <v-row align="center" justify="center">
-                  <div class="text-h6 text--secondary">
+                  <div class="text-h6 text--secondary text-center">
                     Или откройте чат WhatsApp
                   </div>
                   <!-- eslint-disable-next-line vue/no-template-shadow -->
@@ -78,7 +78,7 @@
                       </v-icon>
                     </v-btn>
                   </v-hover>
-                  <div class="text-h6 text--secondary">
+                  <div v-if="$vuetify.breakpoint.smAndUp" class="text-h6 text--secondary text-center">
                     для получения консультации
                   </div>
                 </v-row>

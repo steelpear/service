@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <v-toolbar v-if="!$vuetify.breakpoint.mobile" dark height="auto" class="px-3 py-4 grad-bkg text-no-wrap font-weight-regular">
+    <v-toolbar v-if="!$vuetify.breakpoint.mobile" dark height="auto" class="px-3 py-6 grad-bkg text-no-wrap font-weight-regular">
       <v-row align="center" :justify="$vuetify.breakpoint.xsOnly ? 'start' : 'center'" wrap>
         <div v-ripple class="menu-btn mx-2" @click="$vuetify.goTo($refs.about)">
           О нас
@@ -29,17 +29,17 @@
     <slider />
     <advantages ref="advantages" />
     <about ref="about" />
-    <work ref="work" class="d-none" />
-    <defects ref="defects" class="d-none" />
-    <equipment ref="equipment" class="d-none" />
-    <consult ref="consult" class="d-none" />
-    <recalls ref="recalls" class="mt-3 d-none" />
+    <work ref="work" />
+    <defects ref="defects" />
+    <equipment ref="equipment" />
+    <consult ref="consult" />
+    <recalls ref="recalls" />
     <v-footer
       dark
       class="py-10 px-12 grad-bkg"
     >
-      <v-row>
-        <div
+      <v-row align="start">
+        <v-col
           cols="12"
           xs="12"
           sm="12"
@@ -47,7 +47,9 @@
         >
           <v-row align="start">
             <v-icon
+              v-if="!$vuetify.breakpoint.mobile"
               large
+              class="mr-2"
             >
               mdi-map-marker-outline
             </v-icon>
@@ -61,9 +63,11 @@
               <div>(здание швейной фабрики)</div>
             </div>
           </v-row>
-          <v-row class="mt-3">
+          <v-row align="start" class="mt-5">
             <v-icon
+              v-if="!$vuetify.breakpoint.mobile"
               large
+              class="mr-2"
             >
               mdi-phone-in-talk-outline
             </v-icon>
@@ -74,7 +78,9 @@
           <v-divider class="my-6" width="70%" />
           <v-row align="start">
             <v-icon
+              v-if="!$vuetify.breakpoint.mobile"
               large
+              class="mr-2"
             >
               mdi-clock-outline
             </v-icon>
@@ -93,13 +99,12 @@
               </div>
             </div>
           </v-row>
-        </div>
-        <div
+        </v-col>
+        <v-col
           cols="12"
           xs="12"
           sm="12"
           md="6"
-          class="d-none"
         >
           <yandex-map
             :coords="coords"
@@ -114,8 +119,8 @@
               :icon="{color: 'orange', content: 'Сервис Мобил'}"
             />
           </yandex-map>
-        </div>
-        <div
+        </v-col>
+        <v-col
           cols="12"
           xs="12"
           sm="12"
@@ -146,17 +151,18 @@
             </div>
           </div>
           <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a>
-        </div>
+        </v-col>
       </v-row>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
       <v-fab-transition>
         <v-btn
+          v-if="!$vuetify.breakpoint.mobile"
           v-show="offsetTop > 25"
           color="indigo"
           fab
           dark
           fixed
-          class="up-btn hidden-sm-and-down"
+          class="up-btn"
           @click="$vuetify.goTo(0)"
         >
           <v-icon>
@@ -228,7 +234,6 @@ export default {
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: -5px;
     opacity:.5;
     transition: width .3s ease-in-out, opacity 1s;
   }

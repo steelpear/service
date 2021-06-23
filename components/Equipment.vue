@@ -4,10 +4,17 @@
       <div class="text-center display-1">
         Оборудование для диагностики и ремонта
       </div>
-      <div class="text-center line-title mt-1 title text--secondary">
+      <div class="text-center mt-1 title text--secondary" :class="{'line-title' : !$vuetify.breakpoint.mobile}">
         Мы используем только качественное и современное оборудование и инструменты
       </div>
-      <v-row aling="start" justify="center" class="text-center mt-5" wrap no-gutters>
+      <v-row
+        aling="start"
+        justify="center"
+        class="text-center mt-5"
+        :class="{'mb-n16' : $vuetify.breakpoint.mobile}"
+        wrap
+        no-gutters
+      >
         <v-col
           v-for="item in items1"
           :key="item._id"
@@ -21,7 +28,7 @@
               <div style="position: relative">
                 <v-img
                   :src="item.img"
-                  max-width="270"
+                  :max-width="$vuetify.breakpoint.xsOnly ? '220' : '270'"
                   class="mx-auto pa-1 mb-3 item-img"
                 />
                 <div :class="{ 'black--text': hover }" class="text-h6">
@@ -38,7 +45,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-row align="center" class="hidden-sm-and-down" no-gutters>
+    <v-row v-if="!$vuetify.breakpoint.mobile" align="center" no-gutters>
       <v-col
         v-for="(item, index) in banner"
         :key="index"
@@ -51,7 +58,14 @@
       </v-col>
     </v-row>
     <v-container class="py-12">
-      <v-row aling="start" justify="center" class="text-center" wrap no-gutters>
+      <v-row
+        aling="start"
+        justify="center"
+        class="text-center"
+        :class="{'mt-n16' : $vuetify.breakpoint.mobile}"
+        wrap
+        no-gutters
+      >
         <v-col
           v-for="item in items2"
           :key="item._id"
@@ -65,7 +79,7 @@
               <div style="position: relative">
                 <v-img
                   :src="item.img"
-                  max-width="270"
+                  :max-width="$vuetify.breakpoint.xsOnly ? '220' : '270'"
                   class="mx-auto pa-1 mb-3 item-img"
                 />
                 <div :class="{ 'black--text': hover }" class="text-h6">

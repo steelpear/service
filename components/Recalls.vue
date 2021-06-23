@@ -1,21 +1,21 @@
 <template>
   <v-container class="py-12" style="position: relative;">
-    <div class="text-center display-1">
+    <div class="text-center display-1 mb-2">
       Отзывы наших клиентов
     </div>
     <v-carousel
-      height="250"
+      :height="$vuetify.breakpoint.mobile ? 'auto' : '250'"
+      :show-arrows="!$vuetify.breakpoint.mobile"
       hide-delimiters
     >
       <v-carousel-item
         v-for="(item, i) in items"
         :key="i"
-        class="px-16"
+        :class="$vuetify.breakpoint.mobile ? 'px-1' : 'px-16'"
         ripple
       >
-        <v-sheet height="100%" class="px-16">
+        <v-sheet height="100%" :class="$vuetify.breakpoint.mobile ? 'px-1' : 'px-16'">
           <v-row
-            class="fill-height"
             align="center"
             justify="center"
           >
@@ -26,7 +26,7 @@
               <div class="pt-1 title">
                 {{ item.name }}
               </div>
-              <div class="pt-1 caption">
+              <div class="caption">
                 {{ item.city }}
               </div>
             </v-col>
