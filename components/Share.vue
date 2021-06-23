@@ -1,5 +1,5 @@
 <template>
-  <section class="text-right">
+  <section>
     <ShareNetwork
       v-for="network in networks"
       :key="network.network"

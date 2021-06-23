@@ -16,6 +16,7 @@
       >
         <v-sheet height="100%" :class="$vuetify.breakpoint.mobile ? 'px-1' : 'px-16'">
           <v-row
+            :class="{'fill-height' : $vuetify.breakpoint.mdAndUp}"
             align="center"
             justify="center"
           >

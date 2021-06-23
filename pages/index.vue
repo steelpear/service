@@ -36,24 +36,14 @@
     <recalls ref="recalls" />
     <v-footer
       dark
-      class="py-10 px-12 grad-bkg"
+      class="py-10 grad-bkg"
+      :class="$vuetify.breakpoint.xsOnly ? 'px-8' : 'px-12'"
     >
-      <v-row align="start">
-        <v-col
-          cols="12"
-          xs="12"
-          sm="12"
-          md="3"
-        >
-          <v-row align="start">
-            <v-icon
-              v-if="!$vuetify.breakpoint.mobile"
-              large
-              class="mr-2"
-            >
-              mdi-map-marker-outline
-            </v-icon>
-            <div class="pt-0">
+      <!-- --------------------- Start mobile footer ----------------------------------- -->
+      <div v-if="$vuetify.breakpoint.mobile" style="width: 100%">
+        <v-row align="start" fustify="space-between">
+          <v-col cols="12" xs="12" sm="6" md="3" :class="{'text-center' : $vuetify.breakpoint.xsOnly}">
+            <div>
               <div class="title">
                 Республика Крым
               </div>
@@ -62,29 +52,15 @@
               </div>
               <div>(здание швейной фабрики)</div>
             </div>
-          </v-row>
-          <v-row align="start" class="mt-5">
-            <v-icon
-              v-if="!$vuetify.breakpoint.mobile"
-              large
-              class="mr-2"
-            >
-              mdi-phone-in-talk-outline
-            </v-icon>
-            <div class="headline ml-2">
+            <div class="headline mt-1">
               <a href="tel:+7 (978) 895-11-10" style="color: inherit; text-decoration: none;">+7 (978) 895-11-10</a>
             </div>
-          </v-row>
-          <v-divider class="my-6" width="70%" />
-          <v-row align="start">
-            <v-icon
-              v-if="!$vuetify.breakpoint.mobile"
-              large
-              class="mr-2"
-            >
-              mdi-clock-outline
-            </v-icon>
-            <div class="pt-0">
+          </v-col>
+          <v-col class="hidden-sm-and-down">
+            <v-img src="logo.png" max-width="200" class="mx-auto white" />
+          </v-col>
+          <v-col cols="12" xs="12" sm="6" md="3" :class="{'text-center' : $vuetify.breakpoint.xsOnly}">
+            <div :class="{'text-right' : !$vuetify.breakpoint.xsOnly}">
               <div class="title">
                 Режим работы:
               </div>
@@ -98,18 +74,13 @@
                 без выходных
               </div>
             </div>
-          </v-row>
-        </v-col>
-        <v-col
-          cols="12"
-          xs="12"
-          sm="12"
-          md="6"
-        >
+          </v-col>
+        </v-row>
+        <div class="mt-5">
           <yandex-map
             :coords="coords"
             zoom="16"
-            style="height: 300px;"
+            style="height: 300px; width: auto"
             :behaviors="['drag']"
             :controls="['default']"
           >
@@ -119,40 +90,130 @@
               :icon="{color: 'orange', content: 'Сервис Мобил'}"
             />
           </yandex-map>
-        </v-col>
-        <v-col
-          cols="12"
-          xs="12"
-          sm="12"
-          md="3"
-        >
-          <div class="title text-center mb-2">
-            Поделиться
-          </div>
-          <share />
-          <div class="ml-10 mt-3 mb-5">
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.about)">
-              О нас
+        </div>
+        <share class="mt-5 text-center" />
+        <div class="text-center mt-2">
+          <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption" align-self="bottom">сделано steelpear</a>
+        </div>
+      </div>
+      <!-- --------------------- End mobile footer ----------------------------------- -->
+      <div v-else style="width: 100%">
+        <v-row align="start">
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="3"
+          >
+            <v-row align="start">
+              <v-icon
+                v-if="!$vuetify.breakpoint.mobile"
+                large
+                class="mr-2"
+              >
+                mdi-map-marker-outline
+              </v-icon>
+              <div class="pt-0">
+                <div class="title">
+                  Республика Крым
+                </div>
+                <div class="title">
+                  г.Керчь, ул.Ерёменко 30И
+                </div>
+                <div>(здание швейной фабрики)</div>
+              </div>
+            </v-row>
+            <v-row align="start" class="mt-5">
+              <v-icon
+                v-if="!$vuetify.breakpoint.mobile"
+                large
+                class="mr-2"
+              >
+                mdi-phone-in-talk-outline
+              </v-icon>
+              <div class="headline ml-2">
+                <a href="tel:+7 (978) 895-11-10" style="color: inherit; text-decoration: none;">+7 (978) 895-11-10</a>
+              </div>
+            </v-row>
+            <v-divider class="my-6" width="70%" />
+            <v-row align="start">
+              <v-icon
+                v-if="!$vuetify.breakpoint.mobile"
+                large
+                class="mr-2"
+              >
+                mdi-clock-outline
+              </v-icon>
+              <div class="pt-0">
+                <div class="title">
+                  Режим работы:
+                </div>
+                <div class="title">
+                  с 10.00 до 18.00
+                </div>
+                <div class="title">
+                  без перерыва
+                </div>
+                <div class="title">
+                  без выходных
+                </div>
+              </div>
+            </v-row>
+          </v-col>
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="6"
+          >
+            <yandex-map
+              :coords="coords"
+              zoom="16"
+              style="height: 300px;"
+              :behaviors="['drag']"
+              :controls="['default']"
+            >
+              <ymap-marker
+                marker-id="1"
+                :coords="coords"
+                :icon="{color: 'orange', content: 'Сервис Мобил'}"
+              />
+            </yandex-map>
+          </v-col>
+          <v-col
+            cols="12"
+            xs="12"
+            sm="12"
+            md="3"
+          >
+            <div class="title text-center mb-2">
+              Поделиться
             </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.advantages)">
-              Наши преимущества
+            <share class="text-right" />
+            <div class="ml-10 mt-3 mb-5">
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.about)">
+                О нас
+              </div>
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.advantages)">
+                Наши преимущества
+              </div>
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.work, {offset: -30})">
+                Как мы работаем
+              </div>
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.equipment)">
+                Оборудование
+              </div>
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.defects)">
+                Типовые неисправности
+              </div>
+              <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.consult)">
+                Бесплатная консультация
+              </div>
             </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.work, {offset: -30})">
-              Как мы работаем
-            </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.equipment)">
-              Оборудование
-            </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.defects)">
-              Типовые неисправности
-            </div>
-            <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.consult)">
-              Бесплатная консультация
-            </div>
-          </div>
-          <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a>
-        </v-col>
-      </v-row>
+            <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a>
+          </v-col>
+        </v-row>
+      </div>
       <!-- <span>&copy; {{ new Date().getFullYear() }}</span> -->
       <v-fab-transition>
         <v-btn

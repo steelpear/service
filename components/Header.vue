@@ -72,35 +72,67 @@
           <v-icon
             large
             color="indigo"
+            class="hidden-xs-only"
           >
             mdi-alert-circle-check-outline
           </v-icon>
           Узнать статус ремонта
         </div>
-        <v-card-text class="mt-6">
-          <v-text-field
-            v-model="number"
-            v-mask="'#####'"
-            label="Введите номер квитанции"
-            outlined
-            clearable
-            hint="Номер квитанции (только цифры)"
-          />
-        </v-card-text>
-        <v-card-actions>
-          <v-btn
-            color="indigo"
-            class="py-6"
-            dark
-            block
-            tile
-            large
-            @click="getStatus"
-          >
-            Узнать
-          </v-btn>
-        </v-card-actions>
-        <v-img src="logo.png" max-width="250" class="mx-auto mt-6 hidden-sm-and-down" />
+        <!-- ------------------------ Start mobile ----------------------- -->
+        <div v-if="$vuetify.breakpoint.mobile" class="pa-6">
+          <v-row align="start">
+            <v-col cols="12" xs="12" sm="6" md="6">
+              <v-text-field
+                v-model="number"
+                v-mask="'#####'"
+                label="Введите номер квитанции"
+                outlined
+                clearable
+                hint="Номер квитанции (только цифры)"
+              />
+            </v-col>
+            <v-col cols="12" xs="12" sm="6" md="6">
+              <v-btn
+                color="indigo"
+                class="py-7"
+                dark
+                block
+                tile
+                large
+                @click="getStatus"
+              >
+                Узнать
+              </v-btn>
+            </v-col>
+          </v-row>
+        </div>
+        <!-- ------------------------ End mobile ----------------------- -->
+        <div v-else>
+          <v-card-text class="mt-6">
+            <v-text-field
+              v-model="number"
+              v-mask="'#####'"
+              label="Введите номер квитанции"
+              outlined
+              clearable
+              hint="Номер квитанции (только цифры)"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-btn
+              color="indigo"
+              class="py-6"
+              dark
+              block
+              tile
+              large
+              @click="getStatus"
+            >
+              Узнать
+            </v-btn>
+          </v-card-actions>
+        </div>
+        <v-img src="logo.png" max-width="250" class="mx-auto mt-6 hidden-xs-only" />
       </v-card>
     </v-navigation-drawer>
 

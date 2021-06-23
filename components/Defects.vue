@@ -10,7 +10,7 @@
         z-index="0"
       />
     </v-parallax>
-    <div class="px-4 mx-auto" :class="$vuetify.breakpoint.mobile ? 'grad-bkg' : 'text-wrap'">
+    <div class="px-4 mx-auto" :class="$vuetify.breakpoint.mobile ? 'grad-bkg py-8' : 'text-wrap'">
       <div class="text-center display-1 white--text mb-6 pt-3">
         Типовые неисправности мобильных телефонов
       </div>

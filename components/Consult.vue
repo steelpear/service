@@ -27,6 +27,8 @@
                 <v-row align="start" justify="center">
                   <v-col
                     cols="12"
+                    xs="12"
+                    sm="6"
                     md="6"
                   >
                     <v-text-field
@@ -40,7 +42,12 @@
                       prepend-inner-icon="mdi-cellphone"
                     />
                   </v-col>
-                  <v-col>
+                  <v-col
+                    cols="12"
+                    xs="12"
+                    sm="6"
+                    md="6"
+                  >
                     <v-btn
                       block
                       dark
@@ -50,7 +57,7 @@
                       x-large
                       @click="orderConsult"
                     >
-                      Заказать <span class="hidden-xs-only">&nbsp;консультацию</span>
+                      Заказать <span class="hidden-sm-and-down">&nbsp;консультацию</span>
                     </v-btn>
                   </v-col>
                 </v-row>
@@ -78,7 +85,7 @@
                       </v-icon>
                     </v-btn>
                   </v-hover>
-                  <div v-if="$vuetify.breakpoint.smAndUp" class="text-h6 text--secondary text-center">
+                  <div v-if="!$vuetify.breakpoint.mobile" class="text-h6 text--secondary text-center">
                     для получения консультации
                   </div>
                 </v-row>
