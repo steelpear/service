@@ -143,7 +143,6 @@
 </template>
 
 <script>
-import emailjs from 'emailjs-com'
 export default {
   data () {
     return {
@@ -157,17 +156,23 @@ export default {
       if (!this.phone) {
         this.phoneAlert = true
       } else {
-        try {
-          // eslint-disable-next-line import/no-named-as-default-member
-          emailjs.send('service_ehxrvcj', 'template_jc0asd1',
-            { message: this.phone }, 'user_yAXzCkfFs7sOpLhcM4mPg')
-          setTimeout(() => {
-            this.sended = true
-          }, 1000)
-        } catch (error) {
-          // eslint-disable-next-line no-console
-          console.log({ error })
-        }
+        this.$axios.post('https://api.emailjs.com/api/v1.0/email/send', {
+          service_id: 'service_ehxrvcj',
+          template_id: 'template_jc0asd1',
+          user_id: 'user_yAXzCkfFs7sOpLhcM4mPg',
+          template_params: {
+            message: this.phone
+          }
+        })
+          .then(() => {
+            setTimeout(() => {
+              this.sended = true
+            }, 1000)
+          })
+          .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.log(error)
+          })
         this.phone = ''
       }
     }

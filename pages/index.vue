@@ -224,6 +224,7 @@
           dark
           fixed
           class="up-btn"
+          style="z-index: 10"
           @click="$vuetify.goTo(0)"
         >
           <v-icon>
