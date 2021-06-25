@@ -77,19 +77,21 @@
           </v-col>
         </v-row>
         <div class="mt-5">
-          <yandex-map
-            :coords="coords"
-            zoom="16"
-            style="height: 300px; width: auto"
-            :behaviors="['drag']"
-            :controls="['default']"
-          >
-            <ymap-marker
-              marker-id="1"
+          <client-only>
+            <yandex-map
               :coords="coords"
-              :icon="{color: 'orange', content: 'Сервис Мобил'}"
-            />
-          </yandex-map>
+              zoom="16"
+              style="height: 300px; width: auto"
+              :behaviors="['drag']"
+              :controls="['default']"
+            >
+              <ymap-marker
+                marker-id="1"
+                :coords="coords"
+                :icon="{color: 'orange', content: 'Сервис Мобил'}"
+              />
+            </yandex-map>
+          </client-only>
         </div>
         <share class="mt-5 text-center" />
         <div class="text-center mt-2">
