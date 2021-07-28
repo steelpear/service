@@ -35,7 +35,6 @@
             <a href="tel:+7 (978) 895-11-10" class="phone-link font-weight-black">+7 (978) 895-11-10</a>
           </div>
         </v-row>
-        <!-- <br class="hidden-sm-and-down"> -->
         <div :class="$vuetify.breakpoint.xsOnly ? 'text-center mt-6' : 'text-right mt-12'">
           <v-btn
             dark
@@ -162,9 +161,9 @@
           <div>
             <span class="font-weight-medium">Номер квитанции:</span> {{ result.kvit }}
           </div>
-          <div>
+          <!-- <div>
             <span class="font-weight-medium">Ф.И.О.:</span> {{ result.sfio }}
-          </div>
+          </div> -->
           <div>
             <span class="font-weight-medium">Модель:</span> {{ result.appmod }}
           </div>
@@ -177,15 +176,18 @@
           <div>
             <span class="font-weight-medium">Дата приёмки:</span> {{ new Date(result.sdatone).toLocaleDateString() }}
           </div>
+          <div v-if="result.sdatrep">
+            <span class="font-weight-medium">Дата ремонта:</span> {{ new Date(result.sdatrep).toLocaleDateString() }}
+          </div>
           <div v-if="result.sdout">
             <span class="font-weight-medium">Дата выдачи:</span> {{ new Date(result.sdout).toLocaleDateString() }}
           </div>
           <div v-if="result.swork !== null && result.swork !== ''">
             <span class="font-weight-medium">Выполненные работы:</span> {{ result.swork }}
           </div>
-          <div v-if="result.swarant2 !== null && result.swarant2 !== ''">
+          <!-- <div v-if="result.swarant2 !== null && result.swarant2 !== ''">
             <span class="font-weight-medium">Гарантия:</span> {{ result.swarant2 }}
-          </div>
+          </div> -->
           <div v-if="result.scen3 !== null && result.scen3 !== '0' && result.scen3 !== ''">
             <span class="font-weight-medium">Стоимость ремонта:</span> <span class="indigo--text text--darken-2 text-h5 font-weight-medium">{{ result.scen3 }}</span> р.
           </div>
@@ -257,6 +259,11 @@ export default {
       numberAlert: false,
       kvitAlert: false
     }
+  },
+  mounted () {
+    this.$nuxt.$on('gocheck', () => {
+      this.statusDialog = true
+    })
   },
   methods: {
     closeStatusDialog () {

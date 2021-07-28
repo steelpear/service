@@ -267,7 +267,7 @@ export default {
   },
   data () {
     return {
-      coords: [45.362039, 36.469364],
+      coords: [45.361837, 36.469105],
       offsetTop: 0
     }
   },

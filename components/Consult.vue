@@ -13,7 +13,7 @@
               Остались вопросы?
             </div>
             <div class="title">
-              Закажите бесплатную консультацию и наш менеджер перезвонит Вам
+              Закажите бесплатную консультацию и наш специалист перезвонит Вам
             </div>
             <v-hover v-slot="{ hover }" open-delay="200">
               <v-card
@@ -63,7 +63,7 @@
                 </v-row>
                 <v-row align="center" justify="center">
                   <div class="text-h6 text--secondary text-center">
-                    Или откройте чат WhatsApp
+                    Или откройте чат Viber
                   </div>
                   <!-- eslint-disable-next-line vue/no-template-shadow -->
                   <v-hover v-slot="{ hover }" open-delay="200">
@@ -73,16 +73,11 @@
                       outlined
                       large
                       color="#13940A"
-                      href="https://api.whatsapp.com/send?phone=79788951110"
+                      href="viber://chat?number=%2B79788951110"
                       target="_blank"
                       :class="{ 'animate__animated animate__tada': hover }"
                     >
-                      <v-icon
-                        dark
-                        large
-                      >
-                        mdi-whatsapp
-                      </v-icon>
+                      <v-img src="viber.svg" width="50" />
                     </v-btn>
                   </v-hover>
                   <div v-if="!$vuetify.breakpoint.mobile" class="text-h6 text--secondary text-center">
