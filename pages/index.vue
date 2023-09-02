@@ -2,7 +2,7 @@
   <div>
     <Header />
     <v-toolbar v-if="!$vuetify.breakpoint.mobile" dark height="auto" class="px-3 py-6 grad-bkg text-no-wrap font-weight-regular">
-      <v-row align="center" :justify="$vuetify.breakpoint.xsOnly ? 'start' : 'center'" wrap>
+      <v-row align="center" :justify="$vuetify.breakpoint.xsOnly ? 'start' : 'space-around'" wrap>
         <div v-ripple class="menu-btn mx-2" @click="$vuetify.goTo($refs.about)">
           О нас
         </div>
@@ -48,16 +48,22 @@
                 Республика Крым
               </div>
               <div class="title">
-                г.Керчь, ул.Ерёменко 30И
+                г.Керчь, "Мегацентр"
               </div>
-              <div>(здание швейной фабрики)</div>
+              <div class="title">
+                Кооперативный пер. 26
+              </div>
+              <div class="title">
+                офис 102
+              </div>
+              <div>(1й офис от центрального входа)</div>
             </div>
             <div class="headline mt-1">
               <a href="tel:+7 (978) 895-11-10" style="color: inherit; text-decoration: none;">+7 (978) 895-11-10</a>
             </div>
           </v-col>
           <v-col class="hidden-sm-and-down">
-            <v-img src="logo.png" max-width="200" class="mx-auto white" />
+            <v-img src="logo.jpg" max-width="200" class="mx-auto white" />
           </v-col>
           <v-col cols="12" xs="12" sm="6" md="3" :class="{'text-center' : $vuetify.breakpoint.xsOnly}">
             <div :class="{'text-right' : !$vuetify.breakpoint.xsOnly}">
@@ -120,9 +126,15 @@
                   Республика Крым
                 </div>
                 <div class="title">
-                  г.Керчь, ул.Ерёменко 30И
+                  г.Керчь, "Мегацентр"
                 </div>
-                <div>(здание швейной фабрики)</div>
+                <div class="title">
+                  Кооперативный пер. 26
+                </div>
+                <div class="title">
+                  офис 102
+                </div>
+                <div>(1й офис от центрального входа)</div>
               </div>
             </v-row>
             <v-row align="start" class="mt-5">
@@ -150,15 +162,9 @@
                 <div class="title">
                   Режим работы:
                 </div>
-                <div class="title">
-                  с 10.00 до 18.00
-                </div>
-                <div class="title">
-                  без перерыва
-                </div>
-                <div class="title">
-                  без выходных
-                </div>
+                <div>с 10.00 до 18.00</div>
+                <div>без перерыва</div>
+                <div>без выходных</div>
               </div>
             </v-row>
           </v-col>
@@ -168,19 +174,32 @@
             sm="12"
             md="6"
           >
-            <yandex-map
-              :coords="coords"
-              zoom="16"
-              style="height: 300px;"
-              :behaviors="['drag']"
-              :controls="['default']"
-            >
-              <ymap-marker
-                marker-id="1"
-                :coords="coords"
-                :icon="{color: 'orange', content: 'Сервис Мобил'}"
-              />
-            </yandex-map>
+            <v-window v-model="window" show-arrows>
+              <v-window-item>
+                <yandex-map
+                  :coords="coords"
+                  zoom="17"
+                  style="height: 310px;"
+                  :behaviors="['drag']"
+                  :controls="['default']"
+                >
+                  <ymap-marker
+                    marker-id="1"
+                    :coords="coords"
+                    :icon="{color: 'orange', content: 'Сервис Мобил'}"
+                  />
+                </yandex-map>
+              </v-window-item>
+              <v-window-item>
+                <v-img src="office.jpg" lazy-src="black.jpg" height="310" />
+              </v-window-item>
+              <v-window-item>
+                <v-img src="subslide1.jpg" lazy-src="black.jpg" height="310" />
+              </v-window-item>
+              <v-window-item>
+                <v-img src="subslide2.jpg" lazy-src="black.jpg" height="310" />
+              </v-window-item>
+            </v-window>
           </v-col>
           <v-col
             cols="12"
@@ -191,7 +210,7 @@
             <div class="title text-center mb-2">
               Поделиться
             </div>
-            <share class="text-right" />
+            <share class="ml-9" />
             <div class="ml-10 mt-3 mb-5">
               <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.about)">
                 О нас
@@ -267,8 +286,9 @@ export default {
   },
   data () {
     return {
-      coords: [45.361837, 36.469105],
-      offsetTop: 0
+      coords: [45.354091, 36.473307],
+      offsetTop: 0,
+      window: 0
     }
   },
   beforeMount () {

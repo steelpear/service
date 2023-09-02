@@ -4,13 +4,13 @@
       :height="$vuetify.breakpoint.xsOnly ? '530' : '400'"
       src="about.jpg"
     >
-      <v-img v-if="!$vuetify.breakpoint.mobile" src="shveyka.jpg" lazy-src="logo.png" max-width="250" class="rimg" />
       <v-overlay
         absolute
         z-index="0"
         opacity="0.6"
         color="blue"
       />
+      <v-img v-if="!$vuetify.breakpoint.mobile" src="office.jpg" lazy-src="black.jpg" max-width="450" class="rimg" />
     </v-parallax>
     <div :class="$vuetify.breakpoint.xsOnly ? 'text-wrap-mobile' : 'text-wrap'">
       <div class="display-1" :class="$vuetify.breakpoint.xsOnly ? 'text-center' : 'mb-4'">
@@ -41,5 +41,6 @@
     top: auto;
     bottom: auto;
     right: 40px;
+    border-radius: 20px;
   }
 </style>

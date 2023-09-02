@@ -1,9 +1,9 @@
 <template>
   <v-container fluid>
-    <v-row align="start" class="pa-4" dense>
+    <v-row align="start" class="px-4 pt-4" dense>
       <v-col cols="12" sm="6" md="4" xs="12">
         <v-row align="start" :justify="$vuetify.breakpoint.xsOnly ? 'center' : 'space-between'" no-gutters>
-          <v-img src="logo.png" max-width="140" class="hidden-sm-and-down" />
+          <v-img src="logo.jpg" max-width="150" class="hidden-sm-and-down" />
           <v-col :class="{'text-center' : $vuetify.breakpoint.xsOnly}">
             <div class="text-h4 red--text text--darken-4 hidden-md-and-up">
               Сервис Мобил
@@ -131,7 +131,7 @@
             </v-btn>
           </v-card-actions>
         </div>
-        <v-img src="logo.png" max-width="250" class="mx-auto mt-6 hidden-xs-only" />
+        <v-img src="logo.jpg" max-width="250" class="mx-auto mt-6 hidden-xs-only" />
       </v-card>
     </v-navigation-drawer>
 

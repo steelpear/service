@@ -12,12 +12,13 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 /* Plugins */
 
-import nuxt_plugin_plugin_2e398840 from 'nuxt_plugin_plugin_2e398840' // Source: .\\components\\plugin.js (mode: 'all')
-import nuxt_plugin_plugin_ed1de7d8 from 'nuxt_plugin_plugin_ed1de7d8' // Source: .\\vuetify\\plugin.js (mode: 'all')
-import nuxt_plugin_vuesocialsharingplugin_73bd9b7c from 'nuxt_plugin_vuesocialsharingplugin_73bd9b7c' // Source: .\\vue-social-sharing-plugin.js (mode: 'all')
-import nuxt_plugin_axios_3ba4fffa from 'nuxt_plugin_axios_3ba4fffa' // Source: .\\axios.js (mode: 'all')
+import nuxt_plugin_plugin_c3714a6e from 'nuxt_plugin_plugin_c3714a6e' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_plugin_c6c3046a from 'nuxt_plugin_plugin_c6c3046a' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_vuesocialsharingplugin_7c6cc165 from 'nuxt_plugin_vuesocialsharingplugin_7c6cc165' // Source: .\\vue-social-sharing-plugin.js (mode: 'all')
+import nuxt_plugin_axios_5a3c1728 from 'nuxt_plugin_axios_5a3c1728' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_ymapPlugin_43baa32b from 'nuxt_plugin_ymapPlugin_43baa32b' // Source: ..\\plugins\\ymapPlugin.js (mode: 'client')
 import nuxt_plugin_vmask_3c04b27e from 'nuxt_plugin_vmask_3c04b27e' // Source: ..\\plugins\\v-mask.js (mode: 'client')
+import nuxt_plugin_vuetify_d6afc2c2 from 'nuxt_plugin_vuetify_d6afc2c2' // Source: ..\\plugins\\vuetify.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -181,20 +182,20 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (typeof nuxt_plugin_plugin_2e398840 === 'function') {
-    await nuxt_plugin_plugin_2e398840(app.context, inject)
+  if (typeof nuxt_plugin_plugin_c3714a6e === 'function') {
+    await nuxt_plugin_plugin_c3714a6e(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_plugin_ed1de7d8 === 'function') {
-    await nuxt_plugin_plugin_ed1de7d8(app.context, inject)
+  if (typeof nuxt_plugin_plugin_c6c3046a === 'function') {
+    await nuxt_plugin_plugin_c6c3046a(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_vuesocialsharingplugin_73bd9b7c === 'function') {
-    await nuxt_plugin_vuesocialsharingplugin_73bd9b7c(app.context, inject)
+  if (typeof nuxt_plugin_vuesocialsharingplugin_7c6cc165 === 'function') {
+    await nuxt_plugin_vuesocialsharingplugin_7c6cc165(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_axios_3ba4fffa === 'function') {
-    await nuxt_plugin_axios_3ba4fffa(app.context, inject)
+  if (typeof nuxt_plugin_axios_5a3c1728 === 'function') {
+    await nuxt_plugin_axios_5a3c1728(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_ymapPlugin_43baa32b === 'function') {
@@ -203,6 +204,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (process.client && typeof nuxt_plugin_vmask_3c04b27e === 'function') {
     await nuxt_plugin_vmask_3c04b27e(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vuetify_d6afc2c2 === 'function') {
+    await nuxt_plugin_vuetify_d6afc2c2(app.context, inject)
   }
 
   // Lock enablePreview in context

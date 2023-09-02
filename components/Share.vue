@@ -32,12 +32,12 @@ export default {
         twitterUser: ''
       },
       networks: [
-        { network: 'twitter', icon: 'mdi-twitter' },
-        { network: 'telegram', icon: 'mdi-telegram' },
-        { network: 'facebook', icon: 'mdi-facebook' },
-        { network: 'vk', icon: 'mdi-vk' },
-        { network: 'odnoklassniki', icon: 'mdi-odnoklassniki' },
-        { network: 'whatsapp', icon: 'mdi-whatsapp' }
+        { network: 'twitter', icon: 'fa-brands fa-x-twitter' },
+        { network: 'telegram', icon: 'fa-brands fa-telegram' },
+        { network: 'facebook', icon: 'fa-brands fa-facebook' },
+        { network: 'vk', icon: 'fa-brands fa-vk' },
+        { network: 'odnoklassniki', icon: 'fa-brands fa-odnoklassniki' },
+        { network: 'whatsapp', icon: 'fa-brands fa-whatsapp' }
       ]
     }
   }
