@@ -155,6 +155,8 @@
                 v-if="!$vuetify.breakpoint.mobile"
                 large
                 class="mr-2"
+                style="cursor: unset;"
+                @click.stop="$router.push('/admin')"
               >
                 mdi-clock-outline
               </v-icon>
@@ -231,7 +233,7 @@
                 Бесплатная консультация
               </div>
             </div>
-            <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано steelpear</a>
+            <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано @steelpear</a>
           </v-col>
         </v-row>
       </div>

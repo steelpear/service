@@ -48,7 +48,7 @@ export default {
     }
   },
   methods: {
-    mimeTypeUrl () { return require('~/static/logo.png') }
+    mimeTypeUrl () { return require('~/static/logo.jpg') }
   }
 }
 </script>

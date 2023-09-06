@@ -14,11 +14,13 @@ import { setContext, getLocation, getRouteData, normalizeError } from './utils'
 
 import nuxt_plugin_plugin_c3714a6e from 'nuxt_plugin_plugin_c3714a6e' // Source: .\\components\\plugin.js (mode: 'all')
 import nuxt_plugin_plugin_c6c3046a from 'nuxt_plugin_plugin_c6c3046a' // Source: .\\vuetify\\plugin.js (mode: 'all')
+import nuxt_plugin_cookieuniversalnuxt_551d3c14 from 'nuxt_plugin_cookieuniversalnuxt_551d3c14' // Source: .\\cookie-universal-nuxt.js (mode: 'all')
 import nuxt_plugin_vuesocialsharingplugin_7c6cc165 from 'nuxt_plugin_vuesocialsharingplugin_7c6cc165' // Source: .\\vue-social-sharing-plugin.js (mode: 'all')
 import nuxt_plugin_axios_5a3c1728 from 'nuxt_plugin_axios_5a3c1728' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_ymapPlugin_43baa32b from 'nuxt_plugin_ymapPlugin_43baa32b' // Source: ..\\plugins\\ymapPlugin.js (mode: 'client')
 import nuxt_plugin_vmask_3c04b27e from 'nuxt_plugin_vmask_3c04b27e' // Source: ..\\plugins\\v-mask.js (mode: 'client')
 import nuxt_plugin_vuetify_d6afc2c2 from 'nuxt_plugin_vuetify_d6afc2c2' // Source: ..\\plugins\\vuetify.js (mode: 'client')
+import nuxt_plugin_vuelidate_4be431c8 from 'nuxt_plugin_vuelidate_4be431c8' // Source: ..\\plugins\\vuelidate.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -190,6 +192,10 @@ async function createApp(ssrContext, config = {}) {
     await nuxt_plugin_plugin_c6c3046a(app.context, inject)
   }
 
+  if (typeof nuxt_plugin_cookieuniversalnuxt_551d3c14 === 'function') {
+    await nuxt_plugin_cookieuniversalnuxt_551d3c14(app.context, inject)
+  }
+
   if (typeof nuxt_plugin_vuesocialsharingplugin_7c6cc165 === 'function') {
     await nuxt_plugin_vuesocialsharingplugin_7c6cc165(app.context, inject)
   }
@@ -208,6 +214,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (process.client && typeof nuxt_plugin_vuetify_d6afc2c2 === 'function') {
     await nuxt_plugin_vuetify_d6afc2c2(app.context, inject)
+  }
+
+  if (process.client && typeof nuxt_plugin_vuelidate_4be431c8 === 'function') {
+    await nuxt_plugin_vuelidate_4be431c8(app.context, inject)
   }
 
   // Lock enablePreview in context

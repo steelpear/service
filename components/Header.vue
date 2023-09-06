@@ -161,9 +161,6 @@
           <div>
             <span class="font-weight-medium">Номер квитанции:</span> {{ result.kvit }}
           </div>
-          <!-- <div>
-            <span class="font-weight-medium">Ф.И.О.:</span> {{ result.sfio }}
-          </div> -->
           <div>
             <span class="font-weight-medium">Модель:</span> {{ result.appmod }}
           </div>
@@ -185,9 +182,6 @@
           <div v-if="result.swork !== null && result.swork !== ''">
             <span class="font-weight-medium">Выполненные работы:</span> {{ result.swork }}
           </div>
-          <!-- <div v-if="result.swarant2 !== null && result.swarant2 !== ''">
-            <span class="font-weight-medium">Гарантия:</span> {{ result.swarant2 }}
-          </div> -->
           <div v-if="result.scen3 !== null && result.scen3 !== '0' && result.scen3 !== ''">
             <span class="font-weight-medium">Стоимость ремонта:</span> <span class="indigo--text text--darken-2 text-h5 font-weight-medium">{{ result.scen3 }}</span> р.
           </div>

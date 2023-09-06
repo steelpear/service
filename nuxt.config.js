@@ -38,7 +38,8 @@ export default {
   plugins: [
     { src: '~/plugins/ymapPlugin.js', mode: 'client' },
     { src: '~/plugins/v-mask.js', mode: 'client' },
-    { src: '~/plugins/vuetify.js', mode: 'client' }
+    { src: '~/plugins/vuetify.js', mode: 'client' },
+    { src: '~/plugins/vuelidate.js', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -56,7 +57,8 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'vue-social-sharing/nuxt'
+    'vue-social-sharing/nuxt',
+    ['cookie-universal-nuxt', { parseJSON: false }]
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
