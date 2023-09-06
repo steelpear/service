@@ -156,7 +156,7 @@
                 large
                 class="mr-2"
                 style="cursor: unset;"
-                @click.stop="$router.push('/admin')"
+                @click="$router.push('/admin')"
               >
                 mdi-clock-outline
               </v-icon>

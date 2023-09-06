@@ -10,7 +10,7 @@
   mysqli_select_db($conn, $dbName);
   $query = "SELECT * FROM $table";
   $res = mysqli_query($conn, $query); 
-  $response = mysqli_fetch_all($res);
+  $response = mysqli_fetch_all($res, MYSQLI_ASSOC);
 
   echo json_encode($response,JSON_UNESCAPED_UNICODE);
 ?>
