@@ -12,7 +12,7 @@
   $conn = mysqli_connect($hostname,$username,$password); 
   mysqli_set_charset($conn, "utf8");
   mysqli_select_db($conn, $dbName);
-  $query = "SELECT * FROM $table WHERE `comment_approved`=1 ORDER BY `comment_ID` DESC LIMIT $skip,$limit";
+  $query = "SELECT * FROM $table ORDER BY `comment_ID` DESC LIMIT $skip,$limit";
   $res = mysqli_query($conn, $query); 
   $response = mysqli_fetch_all($res, MYSQLI_ASSOC);
 

@@ -144,7 +144,10 @@ export default {
   },
   methods: {
     async getComments () {
-      const response = await this.$axios.get('/getcomment.php')
+      const response = await this.$axios.post('/getcommentadmin.php', {
+        limit: 10000,
+        skip: 0
+      })
       this.val = response.data
       this.loading = false
     },

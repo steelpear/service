@@ -13,7 +13,6 @@
         :key="i"
       >
         <v-carousel-item
-          v-if="item.comment_approved !='0'"
           :class="$vuetify.breakpoint.mobile ? 'px-1' : 'px-16'"
           ripple
         >
@@ -24,9 +23,6 @@
               justify="center"
             >
               <v-col cols="12" md="3" class="text-center" style="border-right:1px solid lightgrey">
-                <!-- <v-avatar size="100">
-                  <img :src="item.avatar">
-                </v-avatar> -->
                 <div class="pt-1 title">
                   {{ item.comment_author }}
                 </div>
@@ -46,42 +42,47 @@
       </div>
     </v-carousel>
     <v-row justify="center">
-      <v-btn
-        class="mr-6"
-        large
-        outlined
-        rounded
-        color="indigo"
-        @click.stop="addCommentDialog = true"
-      >
-        <v-icon left>
-          fa-solid fa-pencil
-        </v-icon>
-        Оставить отзыв
-      </v-btn>
-      <v-btn large outlined rounded color="indigo" @click="$router.push('/comments')">
-        <v-icon left>
-          fa-solid fa-eye
-        </v-icon>
-        Посмотреть все
-      </v-btn>
+      <v-col cols="12" md="3" sm="6" xs="12" class="text-center">
+        <v-btn
+          large
+          outlined
+          rounded
+          color="indigo"
+          @click.stop="addCommentDialog = true"
+        >
+          <v-icon left>
+            fa-solid fa-pencil
+          </v-icon>
+          Оставить отзыв
+        </v-btn>
+      </v-col>
+      <v-col cols="12" md="3" sm="6" xs="12" class="text-center">
+        <v-btn large outlined rounded color="indigo" @click="$router.push('/comments')">
+          <v-icon left>
+            fa-solid fa-eye
+          </v-icon>
+          Посмотреть все
+        </v-btn>
+      </v-col>
     </v-row>
     <v-dialog
       v-model="addCommentDialog"
-      persistent
-      max-width="600px"
+      max-width="650px"
     >
       <v-card>
         <v-card-title>
-          <row class="text-h5 text-center" style="width:100%;">Оставить отзыв</row>
+          <row class="text-h5 text-center" style="width:100%;">
+            Оставить отзыв
+          </row>
         </v-card-title>
-        <v-card-text class="pb-1">
+        <v-card-text>
           <v-container>
             <v-row>
               <v-col
                 cols="12"
                 sm="6"
                 md="6"
+                xs="12"
               >
                 <v-text-field
                   v-model="name"
@@ -90,12 +91,13 @@
                   outlined
                   clearable
                   hide-details
-                ></v-text-field>
+                />
               </v-col>
               <v-col
                 cols="12"
                 sm="6"
                 md="6"
+                xs="12"
               >
                 <v-text-field
                   v-model="city"
@@ -103,7 +105,7 @@
                   outlined
                   clearable
                   hide-details
-                ></v-text-field>
+                />
               </v-col>
               <v-col cols="12">
                 <v-textarea
@@ -115,36 +117,43 @@
                   clearable
                   counter="500"
                   :rules="[v => (v || '' ).length <= 500 || 'Не более 500 символов']"
-                ></v-textarea>
+                />
               </v-col>
             </v-row>
             <small>*Поля, обязательные для заполнения</small>
           </v-container>
         </v-card-text>
         <v-card-actions class="pb-3">
-          <vue-recaptcha
-            size="normal"
-            ref="recaptcha"
-            sitekey="6LeM07oUAAAAAE7iDSN3QcTC-knepiStbZ7-GN90"
-            :load-recaptcha-script="true"
-            @verify="recaptchaOk"
-          />
-          <v-spacer></v-spacer>
-          <v-btn
-            color="blue darken-1"
-            text
-            @click="closeCommentDialog"
-          >
-            Отменить
-          </v-btn>
-          <v-btn
-            color="blue darken-1"
-            text
-            :disabled="!name || !text || !recaptcha"
-            @click="sendComment"
-          >
-            Отправить
-          </v-btn>
+          <v-row align="center">
+            <v-col cols="12" xs="12" md="6" sm="6" class="re-wrap">
+              <vue-recaptcha
+                ref="recaptcha"
+                size="normal"
+                sitekey="6LeM07oUAAAAAE7iDSN3QcTC-knepiStbZ7-GN90"
+                :load-recaptcha-script="true"
+                @verify="recaptchaOk"
+              />
+            </v-col>
+            <v-col cols="12" xs="12" md="6" sm="6" class="text-center">
+              <row align="center">
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="closeCommentDialog"
+                >
+                  Отменить
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  :disabled="!name || !text || !recaptcha"
+                  @click="sendComment"
+                >
+                  Отправить
+                </v-btn>
+              </row>
+            </v-col>
+          </v-row>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -228,7 +237,7 @@ export default {
     },
     async getComments () {
       const response = await this.$axios.post('/getcomment.php', {
-        limit: 10,
+        limit: 20,
         skip: 0
       })
       this.items = response.data
@@ -257,3 +266,10 @@ export default {
   }
 }
 </script>
+
+<style>
+.re-wrap {
+  display: flex;
+  justify-content: center;
+}
+</style>
