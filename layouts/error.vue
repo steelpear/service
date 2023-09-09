@@ -36,8 +36,8 @@ export default {
   },
   data () {
     return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
+      pageNotFound: 'Страница не найдена',
+      otherError: 'Ошибка 404!'
     }
   },
   head () {

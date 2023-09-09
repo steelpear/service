@@ -46,11 +46,24 @@
       </div>
     </v-carousel>
     <v-row justify="center">
-      <v-btn large outlined rounded color="indigo" @click.stop="addCommentDialog = true">
+      <v-btn
+        class="mr-6"
+        large
+        outlined
+        rounded
+        color="indigo"
+        @click.stop="addCommentDialog = true"
+      >
         <v-icon left>
           fa-solid fa-pencil
         </v-icon>
         Оставить отзыв
+      </v-btn>
+      <v-btn large outlined rounded color="indigo" @click="$router.push('/comments')">
+        <v-icon left>
+          fa-solid fa-eye
+        </v-icon>
+        Посмотреть все
       </v-btn>
     </v-row>
     <v-dialog
@@ -156,6 +169,27 @@
         </v-btn>
       </template>
     </v-snackbar>
+    <v-snackbar
+      v-model="error"
+      multi-line
+      timeout="3000"
+      top
+      dark
+      rounded
+      color="red"
+    >
+      <span class="text-body-1">Ошибка!</span>
+      <template #action="{ attrs }">
+        <v-btn
+          dark
+          icon
+          v-bind="attrs"
+          @click="sended = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -170,50 +204,15 @@ export default {
       addCommentDialog: false,
       recaptcha: false,
       sended: false,
+      error: false,
       items: [],
       name: '',
       city: '',
-      text: '',
-      val: [
-        {
-          comment_ID: '1',
-          comment_author: 'Наталья',
-          comment_avatar: '',
-          comment_city: 'Москва',
-          comment_author_email: '',
-          comment_date: '2022-08-08 05:30:24',
-          comment_content: 'Приехала на отдых и случайно уронила свой iPhone в воду. Очень расстроилась. Нашла в интернете сайт этого сервисного центра. Ребята настоящие профессионалы. И хотя случай был довольно сложный - за сутки всё починили за вполне приемлемую цену. Рекомендую.',
-          comment_karma: '5',
-          comment_approved: '1'
-        },
-        {
-          comment_ID: '2',
-          comment_author: 'Николай Любимов',
-          comment_avatar: '',
-          comment_city: 'Пермь',
-          comment_author_email: '',
-          comment_date: '2022-06-16 05:42:52',
-          comment_content: 'Смартфон завис и выключился в самый неподходящий момент. Приехал специально из загородного пансионата в сервис. Хорошо, что удачно расположен - рядом с автовокзалом - быстро нашёл. Мастер посмотрел, сказал программа слетела, прошивать надо. За полчаса всё сделали и даже все контакты сохранили, что для меня очень важно. Хорошая работа, спасибо.',
-          comment_karma: '5',
-          comment_approved: '1'
-        },
-        {
-          comment_ID: '53',
-          comment_author: 'Кузьма',
-          comment_avatar: '',
-          comment_city: 'Портленд',
-          comment_author_email: '',
-          comment_date: '2023-09-05 16:24:17',
-          comment_content: 'All Ok!',
-          comment_karma: '5',
-          comment_approved: '0'
-        }
-      ]
+      text: ''
     }
   },
   mounted () {
-    // this.getComments()
-    this.items = this.val
+    this.getComments()
   },
   methods: {
     recaptchaOk () {
@@ -228,18 +227,25 @@ export default {
       this.text = ''
     },
     async getComments () {
-      const response = await this.$axios.get('getcomment.php')
+      const response = await this.$axios.post('/getcomment.php', {
+        limit: 10,
+        skip: 0
+      })
       this.items = response.data
     },
-    sendComment () {
-      // const response = await this.$axios.post('setcomment.php', {
-      //     name: this.name,
-      //     city: this.city,
-      //     text: this.text
-      //   })
-      // console.log(response)
-      this.closeCommentDialog()
-      this.sended = true
+    async sendComment () {
+      const response = await this.$axios.post('/setcomment.php', {
+        name: this.name,
+        city: this.city,
+        text: this.text
+      })
+      if (response.data) {
+        this.$axios.get('/mailer.php')
+        this.closeCommentDialog()
+        this.sended = true
+      } else {
+        this.error = true
+      }
     },
     formatDate (date) {
       const dat = new Date(date).toLocaleDateString('ru-ru')

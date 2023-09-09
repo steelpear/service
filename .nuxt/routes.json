@@ -3,21 +3,24 @@
     "name": "admin",
     "path": "/admin",
     "component": "E:\\\\apps\\\\service\\\\pages\\\\admin.vue",
-    "chunkName": "pages/admin",
-    "_name": "_49d69d3b"
+    "chunkName": "pages/admin"
+  },
+  {
+    "name": "comments",
+    "path": "/comments",
+    "component": "E:\\\\apps\\\\service\\\\pages\\\\comments.vue",
+    "chunkName": "pages/comments"
   },
   {
     "name": "login",
     "path": "/login",
     "component": "E:\\\\apps\\\\service\\\\pages\\\\login.vue",
-    "chunkName": "pages/login",
-    "_name": "_3be22756"
+    "chunkName": "pages/login"
   },
   {
     "name": "index",
     "path": "/",
     "component": "E:\\\\apps\\\\service\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_1867493e"
+    "chunkName": "pages/index"
   }
 ]

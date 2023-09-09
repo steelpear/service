@@ -155,8 +155,6 @@
                 v-if="!$vuetify.breakpoint.mobile"
                 large
                 class="mr-2"
-                style="cursor: unset;"
-                @click="$router.push('/admin')"
               >
                 mdi-clock-outline
               </v-icon>
@@ -272,6 +270,13 @@ import Consult from '~/components/Consult'
 import Equipment from '~/components/Equipment'
 import Defects from '~/components/Defects'
 export default {
+  head () {
+    return {
+      script: [
+        { src: '/chatra.js' }
+      ]
+    }
+  },
   components: {
     Header,
     Work,

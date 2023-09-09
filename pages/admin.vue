@@ -6,9 +6,12 @@
       :items="items"
       item-key="comment_ID"
       show-select
-      class="mt-4"
+      class="mt-4 mb-2"
       :search="search"
       no-data-text="Отзывов пока нет"
+      :loading="loading"
+      loading-text="Отзывы загружаются"
+      no-results-text="Не найдено"
       :footer-props="{
         itemsPerPageOptions: [25,50,100,-1],
         itemsPerPageText: 'Строк на страницу',
@@ -31,6 +34,7 @@
               label="Поиск"
               single-line
               hide-details
+              clearable
             />
           </v-col>
         </v-row>
@@ -43,6 +47,9 @@
         }) }}
       </template>
     </v-data-table>
+    <v-btn icon nuxt to="/" class="mr-4">
+      <v-icon>mdi-home</v-icon>
+    </v-btn>
     <v-btn text :disabled="selected.length < 1 || publicSelect" @click="Public">
       Опубликовать
     </v-btn>
@@ -52,6 +59,48 @@
     <v-btn text :disabled="selected.length < 1" @click="Delete">
       Удалить
     </v-btn>
+    <v-snackbar
+      v-model="sended"
+      multi-line
+      timeout="3000"
+      top
+      dark
+      rounded
+      color="green darken-1"
+    >
+      <span class="text-body-1">{{ snackText }}</span>
+      <template #action="{ attrs }">
+        <v-btn
+          dark
+          icon
+          v-bind="attrs"
+          @click="sended = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
+    <v-snackbar
+      v-model="error"
+      multi-line
+      timeout="3000"
+      top
+      dark
+      rounded
+      color="red"
+    >
+      <span class="text-body-1">Ошибка!</span>
+      <template #action="{ attrs }">
+        <v-btn
+          dark
+          icon
+          v-bind="attrs"
+          @click="sended = false"
+        >
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -60,45 +109,15 @@ export default {
   middleware: 'auth',
   data () {
     return {
+      loading: true,
+      sended: false,
+      error: false,
+      snackText: '',
       publicSelect: false,
       search: '',
       selected: [],
       items: [],
-      val: [
-        {
-          comment_ID: '1',
-          comment_author: 'Наталья',
-          comment_avatar: '',
-          comment_city: 'Москва',
-          comment_author_email: '',
-          comment_date: '2022-08-08 05:30:24',
-          comment_content: 'Приехала на отдых и случайно уронила свой iPhone в воду. Очень расстроилась. Нашла в интернете сайт этого сервисного центра. Ребята настоящие профессионалы. И хотя случай был довольно сложный - за сутки всё починили за вполне приемлемую цену. Рекомендую.',
-          comment_karma: '5',
-          comment_approved: '1'
-        },
-        {
-          comment_ID: '2',
-          comment_author: 'Николай Любимов',
-          comment_avatar: '',
-          comment_city: 'Пермь',
-          comment_author_email: '',
-          comment_date: '2022-06-16 05:42:52',
-          comment_content: 'Смартфон завис и выключился в самый неподходящий момент. Приехал специально из загородного пансионата в сервис. Хорошо, что удачно расположен - рядом с автовокзалом - быстро нашёл. Мастер посмотрел, сказал программа слетела, прошивать надо. За полчаса всё сделали и даже все контакты сохранили, что для меня очень важно. Хорошая работа, спасибо.',
-          comment_karma: '5',
-          comment_approved: '1'
-        },
-        {
-          comment_ID: '53',
-          comment_author: 'Кузьма',
-          comment_avatar: '',
-          comment_city: 'Портленд',
-          comment_author_email: '',
-          comment_date: '2023-09-05 16:24:17',
-          comment_content: 'All Ok!',
-          comment_karma: '5',
-          comment_approved: '0'
-        }
-      ],
+      val: [],
       headers: [
         {
           text: 'Имя',
@@ -119,27 +138,61 @@ export default {
     }
   },
   async mounted () {
-    // await this.getComments()
+    await this.getComments()
     this.items = await this.val
     this.goFilter()
   },
   methods: {
     async getComments () {
-      const response = await this.$axios.get('getcomment.php')
+      const response = await this.$axios.get('/getcomment.php')
       this.val = response.data
+      this.loading = false
     },
     async goFilter () {
       this.selected = []
       this.items = await this.val
       this.items = this.items.filter(item => this.publicSelect ? item.comment_approved === '1' : item.comment_approved === '0')
     },
-    Public () {
+    async Public () {
+      const ids = this.selected.map(item => item.comment_ID)
+      const response = await this.$axios.post('/publiccomment.php', {ids})
+      if (response.data) {
+        await this.getComments()
+        this.items = await this.val
+        this.goFilter()
+        this.snackText = 'Опубликовано'
+        this.sended = true
+      } else {
+        this.error = true
+      }
       this.selected = []
     },
-    Hide () {
+    async Hide () {
+      const ids = this.selected.map(item => item.comment_ID)
+      const response = await this.$axios.post('/hidecomment.php', {ids})
+      if (response.data) {
+        await this.getComments()
+        this.items = await this.val
+        this.goFilter()
+        this.snackText = 'Скрыто'
+        this.sended = true
+      } else {
+        this.error = true
+      }
       this.selected = []
     },
-    Delete () {
+    async Delete () {
+      const ids = this.selected.map(item => item.comment_ID)
+      const response = await this.$axios.post('/delcomment.php', {ids})
+      if (response.data) {
+        await this.getComments()
+        this.items = await this.val
+        this.goFilter()
+        this.snackText = 'Удалено'
+        this.sended = true
+      } else {
+        this.error = true
+      }
       this.selected = []
     }
   }
