@@ -101,7 +101,7 @@
         </div>
         <share class="mt-5 text-center" />
         <div class="text-center mt-2">
-          <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption" align-self="bottom">сделано steelpear</a>
+          <a href="https://t.me/+PUvBL362mwA0NjJi" class="grey--text text--darken-1 caption" align-self="bottom">сделано steelpear</a>
         </div>
       </div>
       <!-- --------------------- End mobile footer ----------------------------------- -->
@@ -206,12 +206,13 @@
             xs="12"
             sm="12"
             md="3"
+            class="pt-0"
           >
-            <div class="title text-center mb-2">
+            <div class="title text-center mb-3">
               Поделиться
             </div>
             <share class="ml-9" />
-            <div class="ml-10 mt-3 mb-5">
+            <div class="ml-10 mt-3 mb-2">
               <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.about)">
                 О нас
               </div>
@@ -230,8 +231,11 @@
               <div v-ripple class="bottom-menu" @click="$vuetify.goTo($refs.consult)">
                 Бесплатная консультация
               </div>
+              <div v-ripple class="bottom-menu">
+                <a href="/servicemobil.apk" style="color: inherit; text-decoration: none;">Приложение Android</a>
+              </div>
             </div>
-            <a href="mailto:steelpear@gmail.com" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано @steelpear</a>
+            <a href="https://t.me/+PUvBL362mwA0NjJi" class="grey--text text--darken-1 caption ml-10" align-self="bottom">сделано @steelpear</a>
           </v-col>
         </v-row>
       </div>
